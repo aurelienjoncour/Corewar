@@ -1,0 +1,10 @@
+*.o
+*.a
+corewar
+asm
+*#
+*~
+vgcore*
+.vscode/
+*.gcno
+*.gcda
