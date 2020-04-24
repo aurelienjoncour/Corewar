@@ -8,3 +8,4 @@ vgcore*
 .vscode/
 *.gcno
 *.gcda
+corewar_binaries
