@@ -15,7 +15,4 @@
 
 int usage(char *binary, int status);
 
-// op_tab
-extern op_t op_tab[];
-
 #endif /* !COREWAR_H_ */
