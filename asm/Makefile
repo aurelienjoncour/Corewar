@@ -11,13 +11,16 @@ INC_DIR		=	include/
 
 LIB_DIR		=	lib/my/
 
-SRC			=	$(SRC_DIR)main.c	\
+SRC			=	$(SRC_DIR)main.c		\
+				$(SRC_DIR)op.c			\
+				$(SRC_DIR)constant.c	\
+				$(SRC_DIR)usage.c		\
 
 OBJ			=	$(SRC:.c=.o)
 
 NAME		=	asm
 
-CFLAGS		+=	-Wall -Wextra -I./include -g
+CFLAGS		+=	-Wall -Wextra -I./include
 
 LDLFLAGS	+= -L $(LIB_DIR) -lmy
 

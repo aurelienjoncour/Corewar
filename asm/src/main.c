@@ -5,9 +5,13 @@
 ** main
 */
 
-#include <stdlib.h>
+#include "corewar.h"
 
-int main(void)
+int main(int ac, char **av)
 {
+    if (ac != 2)
+        return usage(av[0], EXIT_ERROR);
+    if (!my_strcmp(av[1], "-h"))
+        return usage(av[0], EXIT_SUCCESS);
     return EXIT_SUCCESS;
 }

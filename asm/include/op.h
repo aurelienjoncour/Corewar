@@ -50,9 +50,6 @@ typedef struct op_s {
 #define DIR_SIZE 4
 #define REG_SIZE DIR_SIZE
 
-// op_tab
-extern op_t op_tab[];
-
 //header
 #define PROG_NAME_LENGTH 128
 #define COMMENT_LENGTH 2048
