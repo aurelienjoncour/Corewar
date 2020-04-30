@@ -11,10 +11,18 @@ INC_DIR		=	include/
 
 LIB_DIR		=	lib/my/
 
-SRC			=	$(SRC_DIR)main.c		\
-				$(SRC_DIR)op.c			\
-				$(SRC_DIR)constant.c	\
-				$(SRC_DIR)usage.c		\
+SRC			=	$(SRC_DIR)main.c						\
+				$(SRC_DIR)op.c							\
+				$(SRC_DIR)constant.c					\
+				$(SRC_DIR)usage.c						\
+				$(SRC_DIR)clean_line.c					\
+				$(SRC_DIR)get_line.c					\
+				$(SRC_DIR)compile_champions.c			\
+				$(SRC_DIR)create_file.c					\
+				$(SRC_DIR)header/get_header.c			\
+				$(SRC_DIR)header/write_header.c			\
+				$(SRC_DIR)header/get_name.c				\
+				$(SRC_DIR)header/get_comment.c			\
 
 OBJ			=	$(SRC:.c=.o)
 
