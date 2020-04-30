@@ -46,7 +46,7 @@ run:	all
 tests_run:		fclean all
 				make -C tests/
 
-debugs:	fclean all
-		gcc -o $(NAME) $(OBJ) $(LDLFLAGS) -g
+debugs:	CFLAGS += -g
+debugs: re
 
 .PHONY: all clean fclean re run tests_run debugs

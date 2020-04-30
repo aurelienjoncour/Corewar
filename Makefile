@@ -24,4 +24,8 @@ tests_run:
 	make tests_run -C $(ASM_DIR)
 	make tests_run -C $(COREWAR_DIR)
 
+debugs:
+	make debugs -C $(ASM_DIR)
+	make debugs -C $(COREWAR_DIR)
+
 re: fclean all
