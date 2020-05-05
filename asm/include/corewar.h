@@ -18,6 +18,8 @@
 #include "op.h"
 #include "constant.h"
 
+#define MAX_LINE 1000
+
 int usage(char *binary, int status);
 void clean_line(char *line);
 char *get_line(FILE *source_file);
@@ -34,5 +36,6 @@ int write_header(int fd, header_t *header);
 
 char **read_file(FILE *source_file);
 void destroy_file(char **file);
+void edit_file(char **file);
 
 #endif /* !COREWAR_H_ */

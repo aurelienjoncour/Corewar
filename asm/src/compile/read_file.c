@@ -5,15 +5,8 @@
 ** DESCRIPTION
 */
 
-#include <stdbool.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include "corewar.h"
 #include "my.h"
-
-#define MAX_LINE 1000
 
 static bool rec_read(char ***ret, int size, FILE *source_file)
 {
@@ -44,6 +37,9 @@ char **read_file(FILE *source_file)
     char **ret;
 
     rec_read(&ret, 0, source_file);
+    if (!ret)
+        return NULL;
+    edit_file(ret);
     return ret;
 }
 
