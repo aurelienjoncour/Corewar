@@ -7,6 +7,14 @@
 
 #include "corewar.h"
 
+static int end_func(char **file, int fd_compiled, int ret)
+{
+    
+    destroy_file(file);
+    close(fd_compiled);
+    return ret;
+}
+
 int compile_champions(char *filename, FILE *source_file)
 {
     int fd_compiled = 0;
@@ -25,7 +33,7 @@ int compile_champions(char *filename, FILE *source_file)
     file = read_file(source_file);
     if (!file)
         return EXIT_ERROR;
-    destroy_file(file);
-    close(fd_compiled);
-    return EXIT_SUCCESS;
+    //if (!compile_file(file))
+    //    return end_func(file, fd_compiled, EXIT_ERROR);
+    return end_func(file, fd_compiled, EXIT_SUCCESS);
 }
