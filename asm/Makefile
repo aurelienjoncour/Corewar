@@ -23,6 +23,7 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)header/write_header.c			\
 				$(SRC_DIR)header/get_name.c				\
 				$(SRC_DIR)header/get_comment.c			\
+				$(SRC_DIR)compile/read_file.c			\
 
 OBJ			=	$(SRC:.c=.o)
 

@@ -11,6 +11,7 @@ int compile_champions(char *filename, FILE *source_file)
 {
     int fd_compiled = 0;
     header_t header = {0};
+    char **file;
 
     if (get_header(&header, source_file) == EXIT_ERROR)
         return EXIT_ERROR;
@@ -21,6 +22,10 @@ int compile_champions(char *filename, FILE *source_file)
         close(fd_compiled);
         return EXIT_ERROR;
     }
+    file = read_file(source_file);
+    if (!file)
+        return EXIT_ERROR;
+    destroy_file(file);
     close(fd_compiled);
     return EXIT_SUCCESS;
 }
