@@ -17,6 +17,7 @@
 #include "my.h"
 #include "op.h"
 #include "constant.h"
+#include "node.h"
 
 #define MAX_LINE 1000
 
@@ -38,5 +39,7 @@ char **read_file(FILE *source_file);
 void destroy_file(char **file);
 void edit_file(char **file);
 bool compile_file(char **file);
+
+token_t *tokeniser(char *av);
 
 #endif /* !COREWAR_H_ */

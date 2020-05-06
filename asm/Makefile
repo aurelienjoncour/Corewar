@@ -26,6 +26,15 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)compile/read_file.c			\
 				$(SRC_DIR)compile/comment_manage.c		\
 				$(SRC_DIR)compile/line_manage.c			\
+				$(SRC_DIR)parser/node/add_node.c		\
+				$(SRC_DIR)parser/node/connect_node.c	\
+				$(SRC_DIR)parser/node/create_node.c		\
+				$(SRC_DIR)parser/node/destroy_list.c	\
+				$(SRC_DIR)parser/node/display_list.c	\
+				$(SRC_DIR)parser/node/rm_next_node.c	\
+				$(SRC_DIR)parser/node/add_node_at_the_end.c	\
+				$(SRC_DIR)parser/parser_tab.c			\
+				$(SRC_DIR)parser/tokeniser.c			\
 
 OBJ			=	$(SRC:.c=.o)
 

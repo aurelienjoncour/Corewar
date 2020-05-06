@@ -10,5 +10,6 @@
 
 extern const int EXIT_ERROR;
 extern op_t op_tab[];
+extern const parser_t delimit[];
 
 #endif /* !CONSTANT_H_ */
