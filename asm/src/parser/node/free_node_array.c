@@ -9,7 +9,9 @@
 
 void free_node_array(token_t **array)
 {
-    for (size_t i = 0; array[i] != NULL; i++)
-        destroy_list(array[i]);
+    if (array != NULL) {
+        for (size_t i = 0; array[i] != NULL; i++)
+            destroy_list(array[i]);
+    }
     free(array);
 }
