@@ -19,6 +19,11 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)get_line.c					\
 				$(SRC_DIR)compile_champions.c			\
 				$(SRC_DIR)create_file.c					\
+				$(SRC_DIR)error_syntax_line.c			\
+				$(SRC_DIR)error_params.c				\
+				$(SRC_DIR)find_index_op.c				\
+				$(SRC_DIR)get_instruction.c				\
+				$(SRC_DIR)tools/allowed_char.c			\
 				$(SRC_DIR)header/get_header.c			\
 				$(SRC_DIR)header/write_header.c			\
 				$(SRC_DIR)header/get_name.c				\
@@ -29,12 +34,16 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)parser/node/add_node.c		\
 				$(SRC_DIR)parser/node/connect_node.c	\
 				$(SRC_DIR)parser/node/create_node.c		\
+				$(SRC_DIR)parser/node/rm_node.c			\
 				$(SRC_DIR)parser/node/destroy_list.c	\
 				$(SRC_DIR)parser/node/display_list.c	\
 				$(SRC_DIR)parser/node/rm_next_node.c	\
 				$(SRC_DIR)parser/node/add_node_at_the_end.c	\
+				$(SRC_DIR)parser/node/realloc_node_array.c	\
+				$(SRC_DIR)parser/node/free_node_array.c	\
 				$(SRC_DIR)parser/parser_tab.c			\
 				$(SRC_DIR)parser/tokeniser.c			\
+				$(SRC_DIR)parser/rm_useless_separator.c	\
 
 OBJ			=	$(SRC:.c=.o)
 

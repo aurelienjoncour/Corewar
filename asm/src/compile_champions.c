@@ -7,9 +7,9 @@
 
 #include "corewar.h"
 
-static int end_func(char **file, int fd_compiled, int ret)
+static int end_func(token_t **array, int fd_compiled, int ret)
 {
-    destroy_file(file);
+    free_node_array(array);
     close(fd_compiled);
     return ret;
 }
@@ -18,9 +18,12 @@ int compile_champions(char *filename, FILE *source_file)
 {
     int fd_compiled = 0;
     header_t header = {0};
-    char **file;
+    token_t **instruction_line = NULL;
 
     if (get_header(&header, source_file) == EXIT_ERROR)
+        return EXIT_ERROR;
+    instruction_line = get_instruction(source_file);
+    if (instruction_line == NULL)
         return EXIT_ERROR;
     fd_compiled = create_file(filename);
     if (fd_compiled == -1)
@@ -29,10 +32,7 @@ int compile_champions(char *filename, FILE *source_file)
         close(fd_compiled);
         return EXIT_ERROR;
     }
-    file = read_file(source_file);
-    if (!file)
-        return EXIT_ERROR;
     //if (!compile_file(file))
     //    return end_func(file, fd_compiled, EXIT_ERROR);
-    return end_func(file, fd_compiled, EXIT_SUCCESS);
+    return end_func(instruction_line, fd_compiled, EXIT_SUCCESS);
 }
