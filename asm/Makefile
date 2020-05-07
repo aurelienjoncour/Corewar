@@ -36,6 +36,7 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)parser/node/connect_node.c	\
 				$(SRC_DIR)parser/node/create_node.c		\
 				$(SRC_DIR)parser/node/rm_node.c			\
+				$(SRC_DIR)parser/correct_line.c			\
 				$(SRC_DIR)parser/node/destroy_list.c	\
 				$(SRC_DIR)parser/node/display_list.c	\
 				$(SRC_DIR)parser/node/rm_next_node.c	\

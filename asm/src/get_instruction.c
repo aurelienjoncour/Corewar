@@ -19,8 +19,8 @@ static token_t **interprate_file(token_t **instruction_line, char **file)
         if (error_syntax_line(instruction_line[i]) == EXIT_ERROR) {
             return NULL;
         }
-        // if (error_params_type(instruction_line[i]) == EXIT_ERROR)
-        //     return EXIT_ERROR;
+        if (!correct_line(instruction_line[i]))
+            return NULL;
         array++;
         instruction_line = realloc_node_array(instruction_line, array);
         if (instruction_line == NULL)

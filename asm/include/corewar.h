@@ -51,4 +51,6 @@ bool allow_char(char *script, char *allow_char);
 
 void get_prog_size(header_t *header, token_t **token);
 
+bool correct_line(token_t *line);
+
 #endif /* !COREWAR_H_ */
