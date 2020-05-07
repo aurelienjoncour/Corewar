@@ -11,10 +11,11 @@ INC_DIR		=	include/
 
 LIB_DIR		=	lib/my/
 
-SRC			=	$(SRC_DIR)main.c		\
-				$(SRC_DIR)op.c			\
-				$(SRC_DIR)constant.c	\
-				$(SRC_DIR)usage.c		\
+SRC			=	$(SRC_DIR)main.c			\
+				$(SRC_DIR)op.c				\
+				$(SRC_DIR)constant.c		\
+				$(SRC_DIR)usage.c			\
+				$(SRC_DIR)operation/and.c	\
 
 OBJ			=	$(SRC:.c=.o)
 

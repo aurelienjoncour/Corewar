@@ -47,6 +47,8 @@ SRC	=	my_compute_power_rec.c		\
 		realloc_word_array.c		\
 		my_char_is_allowed.c		\
 		my_putstr_error.c			\
+		my_put_nbr_in_str.c			\
+		my_putnbr_base_in_str.c		\
 
 OBJ	=	$(SRC:.c=.o)
 

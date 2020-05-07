@@ -53,5 +53,7 @@ char **dup_word_array(char **array);
 char **realloc_word_array(char **array);
 bool my_char_is_allowed(const char *script, const char *allow_char);
 int my_putstr_error(char const *str);
+char *my_putnbr_base_in_str(long long int nbr, char const *base);
+char *my_put_nbr_in_str(long long int nb);
 
 #endif
