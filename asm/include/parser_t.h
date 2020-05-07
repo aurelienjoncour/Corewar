@@ -11,7 +11,6 @@
 typedef enum id {
     ID_WIHOUT,
     ID_SPACE,
-    ID_TAB,
     ID_DIR,
     ID_LABEL,
     ID_SEPARATOR,
@@ -21,6 +20,9 @@ typedef enum type {
     D_NORMAL,
     D_GET,
     D_SEPARATOR,
+    D_REG,
+    D_DIR,
+    D_IND,
 }TYPE;
 
 typedef struct parser_s{

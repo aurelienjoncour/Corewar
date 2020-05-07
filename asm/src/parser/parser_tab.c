@@ -10,7 +10,7 @@
 const parser_t delimit[] =
 {
     {' ', D_NORMAL, ID_SPACE},
-    {'\t', D_NORMAL, ID_TAB},
+    {'\t', D_NORMAL, ID_SPACE},
     {DIRECT_CHAR, D_GET, ID_DIR},
     {LABEL_CHAR, D_GET,ID_LABEL},
     {SEPARATOR_CHAR, D_SEPARATOR, ID_SEPARATOR},
