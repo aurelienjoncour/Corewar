@@ -33,7 +33,7 @@ int get_comment(header_t *header, char *line);
 int get_name(header_t *header, char *line);
 
 int get_header(header_t *header, FILE *source_file);
-int write_header(int fd, header_t *header);
+int write_header(int fd, header_t *header, token_t **array);
 
 
 token_t **get_instruction(FILE *source_file);
@@ -48,5 +48,7 @@ int error_syntax_line(token_t *token);
 int error_params(token_t *token);
 int find_index_op(char *mnemonique);
 bool allow_char(char *script, char *allow_char);
+
+void get_prog_size(header_t *header, token_t **token);
 
 #endif /* !COREWAR_H_ */

@@ -23,6 +23,7 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)error_params.c				\
 				$(SRC_DIR)find_index_op.c				\
 				$(SRC_DIR)get_instruction.c				\
+				$(SRC_DIR)get_prog_size.c				\
 				$(SRC_DIR)tools/allowed_char.c			\
 				$(SRC_DIR)header/get_header.c			\
 				$(SRC_DIR)header/write_header.c			\

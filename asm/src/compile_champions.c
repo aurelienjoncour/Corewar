@@ -28,7 +28,7 @@ int compile_champions(char *filename, FILE *source_file)
     fd_compiled = create_file(filename);
     if (fd_compiled == -1)
         return EXIT_ERROR;
-    if (write_header(fd_compiled, &header) == EXIT_ERROR) {
+    if (write_header(fd_compiled, &header, instruction_line) == EXIT_ERROR) {
         close(fd_compiled);
         return EXIT_ERROR;
     }
