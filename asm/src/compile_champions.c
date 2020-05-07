@@ -9,7 +9,6 @@
 
 static int end_func(char **file, int fd_compiled, int ret)
 {
-    
     destroy_file(file);
     close(fd_compiled);
     return ret;
