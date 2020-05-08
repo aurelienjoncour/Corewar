@@ -23,12 +23,15 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)error_params.c				\
 				$(SRC_DIR)find_index_op.c				\
 				$(SRC_DIR)get_instruction.c				\
-				$(SRC_DIR)get_prog_size.c				\
+				$(SRC_DIR)write_instruction.c			\
+				$(SRC_DIR)get_description_params.c		\
+				$(SRC_DIR)is_index_type.c				\
 				$(SRC_DIR)tools/allowed_char.c			\
 				$(SRC_DIR)header/get_header.c			\
 				$(SRC_DIR)header/write_header.c			\
 				$(SRC_DIR)header/get_name.c				\
 				$(SRC_DIR)header/get_comment.c			\
+				$(SRC_DIR)header/get_prog_size.c		\
 				$(SRC_DIR)compile/read_file.c			\
 				$(SRC_DIR)compile/comment_manage.c		\
 				$(SRC_DIR)compile/line_manage.c			\
@@ -51,7 +54,7 @@ OBJ			=	$(SRC:.c=.o)
 
 NAME		=	asm
 
-CFLAGS		+=	-Wall -Wextra -I./include
+CFLAGS		+=	-Wall -Wextra -W -I./include
 
 LDLFLAGS	+= -L $(LIB_DIR) -lmy
 

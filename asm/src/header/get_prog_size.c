@@ -7,15 +7,6 @@
 
 #include "corewar.h"
 
-static bool is_index_type(char *mnemonique)
-{
-    for (size_t i = 0; index_list[i] != NULL; i++) {
-        if (!my_strcmp(index_list[i], mnemonique))
-            return true;
-    }
-    return false;
-}
-
 static int get_params_size(TYPE type, bool index_params)
 {
     if (type == D_REG)
@@ -36,7 +27,7 @@ static int compute_size(token_t *tmp)
     bool index_params;
 
     index = find_index_op(tmp->token);
-    if (op_tab[index].nbr_args != 1)
+    if (op_tab[index].nbr_args != 1 || op_tab[index].code == 16)
         size++;
     index_params = is_index_type(tmp->token);
     while (tmp != NULL) {
