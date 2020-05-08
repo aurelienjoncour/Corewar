@@ -47,7 +47,7 @@ token_t **get_instruction(FILE *source_file)
     instruction_line[1] = NULL;
     instruction_line = interprate_file(instruction_line, file);
     free_word_array(file);
-    if (instruction_line == NULL /*|| error_label(instruction_line) == EXIT_ERROR*/) {
+    if (instruction_line == NULL || error_label(instruction_line)) {
         free_node_array(instruction_line);
         return NULL;
     }

@@ -35,6 +35,7 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)instructions/error_syntax_line.c	\
 				$(SRC_DIR)instructions/error_params.c		\
 				$(SRC_DIR)instructions/correct_line.c			\
+				$(SRC_DIR)instructions/error_label.c			\
 				$(SRC_DIR)parser/node/add_node.c		\
 				$(SRC_DIR)parser/node/connect_node.c	\
 				$(SRC_DIR)parser/node/create_node.c		\

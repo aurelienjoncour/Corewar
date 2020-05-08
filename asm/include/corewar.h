@@ -53,5 +53,6 @@ unsigned char get_description_params(token_t *token);
 int write_instruction(int fd, token_t **array);
 bool is_index_type(char *mnemonique);
 bool correct_line(token_t *line);
+bool error_label(token_t **array);
 
 #endif /* !COREWAR_H_ */
