@@ -19,8 +19,6 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)get_line.c					\
 				$(SRC_DIR)compile_champions.c			\
 				$(SRC_DIR)create_file.c					\
-				$(SRC_DIR)error_syntax_line.c			\
-				$(SRC_DIR)error_params.c				\
 				$(SRC_DIR)find_index_op.c				\
 				$(SRC_DIR)is_index_type.c				\
 				$(SRC_DIR)tools/allowed_char.c			\
@@ -34,11 +32,13 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)instructions/get_description_params.c	\
 				$(SRC_DIR)instructions/write_instruction.c	\
 				$(SRC_DIR)instructions/get_instruction.c	\
+				$(SRC_DIR)instructions/error_syntax_line.c	\
+				$(SRC_DIR)instructions/error_params.c		\
+				$(SRC_DIR)instructions/correct_line.c			\
 				$(SRC_DIR)parser/node/add_node.c		\
 				$(SRC_DIR)parser/node/connect_node.c	\
 				$(SRC_DIR)parser/node/create_node.c		\
 				$(SRC_DIR)parser/node/rm_node.c			\
-				$(SRC_DIR)parser/correct_line.c			\
 				$(SRC_DIR)parser/node/destroy_list.c	\
 				$(SRC_DIR)parser/node/display_list.c	\
 				$(SRC_DIR)parser/node/rm_next_node.c	\
