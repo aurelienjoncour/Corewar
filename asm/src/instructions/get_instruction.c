@@ -10,21 +10,23 @@
 static token_t **interprate_file(token_t **instruction_line, char **file)
 {
     size_t array = 2;
+    size_t index = 0;
 
     for (size_t i = 0; file[i] != NULL; i++) {
-        instruction_line[i] = tokeniser(file[i]);
-        rm_useless_separator(instruction_line[i]);
-        if (instruction_line[i] == NULL)
-            return NULL;
-        if (error_syntax_line(instruction_line[i]) == EXIT_ERROR) {
-            return NULL;
-        }
-        if (!correct_line(instruction_line[i]))
+        file[i] = clean_line(file[i]);
+        if (!my_strlen(file[i]))
+             continue;
+        instruction_line[index] = tokeniser(file[i]);
+        rm_useless_separator(instruction_line[index]);
+        if (!instruction_line[index] ||
+            error_syntax_line(instruction_line[index]) ||
+            !correct_line(instruction_line[index]))
             return NULL;
         array++;
         instruction_line = realloc_node_array(instruction_line, array);
         if (instruction_line == NULL)
             return NULL;
+        index++;
     }
     return instruction_line;
 }

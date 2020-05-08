@@ -32,7 +32,7 @@ int compile_champions(char *filename, FILE *source_file)
         close(fd_compiled);
         return EXIT_ERROR;
     }
-    //if (!compile_file(file))
-    //    return end_func(file, fd_compiled, EXIT_ERROR);
+    if (write_instruction(fd_compiled, instruction_line) == EXIT_ERROR)
+        return end_func(instruction_line, fd_compiled, EXIT_ERROR);
     return end_func(instruction_line, fd_compiled, EXIT_SUCCESS);
 }

@@ -22,9 +22,6 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)error_syntax_line.c			\
 				$(SRC_DIR)error_params.c				\
 				$(SRC_DIR)find_index_op.c				\
-				$(SRC_DIR)get_instruction.c				\
-				$(SRC_DIR)write_instruction.c			\
-				$(SRC_DIR)get_description_params.c		\
 				$(SRC_DIR)is_index_type.c				\
 				$(SRC_DIR)tools/allowed_char.c			\
 				$(SRC_DIR)header/get_header.c			\
@@ -32,9 +29,11 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)header/get_name.c				\
 				$(SRC_DIR)header/get_comment.c			\
 				$(SRC_DIR)header/get_prog_size.c		\
-				$(SRC_DIR)compile/read_file.c			\
-				$(SRC_DIR)compile/comment_manage.c		\
-				$(SRC_DIR)compile/line_manage.c			\
+				$(SRC_DIR)instructions/read_file.c		\
+				$(SRC_DIR)instructions/comment_manage.c	\
+				$(SRC_DIR)instructions/get_description_params.c	\
+				$(SRC_DIR)instructions/write_instruction.c	\
+				$(SRC_DIR)instructions/get_instruction.c	\
 				$(SRC_DIR)parser/node/add_node.c		\
 				$(SRC_DIR)parser/node/connect_node.c	\
 				$(SRC_DIR)parser/node/create_node.c		\
