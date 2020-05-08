@@ -13,7 +13,7 @@ static int get_params_size(TYPE type, bool index_params)
         return 1;
     if ((type == D_DIR || type == D_IND) && index_params)
         return 2;
-    if(type == D_DIR)
+    if (type == D_DIR)
         return DIR_SIZE;
     if (type == D_IND)
         return IND_SIZE;

@@ -15,7 +15,7 @@ static token_t **interprate_file(token_t **instruction_line, char **file)
     for (size_t i = 0; file[i] != NULL; i++) {
         file[i] = clean_line(file[i]);
         if (!my_strlen(file[i]))
-             continue;
+            continue;
         instruction_line[index] = tokeniser(file[i]);
         rm_useless_separator(instruction_line[index]);
         if (!instruction_line[index] ||

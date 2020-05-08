@@ -1,8 +1,8 @@
 /*
-** EPITECH PROJECT, 2019
-** 
+** EPITECH PROJECT, 2020
+** CPE_corewar_2019
 ** File description:
-** DESCRIPTION
+** read_file
 */
 
 #include "corewar.h"

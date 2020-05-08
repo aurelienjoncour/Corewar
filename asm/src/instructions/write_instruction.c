@@ -20,8 +20,8 @@ static int write_first_part(int fd, token_t *token, int *index)
     *index = find_index_op(tmp->token);
     write(fd, &op_tab[*index].code, sizeof(char));
     if (op_tab[*index].nbr_args != 1 || op_tab[*index].code == 16) {
-       byte = get_description_params(tmp);
-       write(fd, &byte, sizeof(char));
+        byte = get_description_params(tmp);
+        write(fd, &byte, sizeof(char));
     }
     return EXIT_SUCCESS;
 }
