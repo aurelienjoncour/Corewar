@@ -22,7 +22,7 @@
 #define MAX_LINE 1000
 
 int usage(char *binary, int status);
-void clean_line(char *line);
+char *clean_line(char *line);
 char *get_line(FILE *source_file);
 
 int create_file(char *filepath);
@@ -40,7 +40,6 @@ token_t **get_instruction(FILE *source_file);
 char **read_file(FILE *source_file);
 void destroy_file(char **file);
 void edit_file(char **file);
-bool compile_file(char **file);
 
 token_t *tokeniser(char *av);
 void rm_useless_separator(token_t *token);
@@ -50,7 +49,10 @@ int find_index_op(char *mnemonique);
 bool allow_char(char *script, char *allow_char);
 
 void get_prog_size(header_t *header, token_t **token);
-
+unsigned char get_description_params(token_t *token);
+int write_instruction(int fd, token_t **array);
+bool is_index_type(char *mnemonique);
 bool correct_line(token_t *line);
+bool error_label(token_t **array);
 
 #endif /* !COREWAR_H_ */

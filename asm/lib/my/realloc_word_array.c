@@ -23,5 +23,6 @@ char **realloc_word_array(char **array)
     }
     dup[size] = NULL;
     dup[size + 1] = NULL;
+    free_word_array(array);
     return dup;
 }

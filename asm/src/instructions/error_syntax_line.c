@@ -10,7 +10,6 @@
 static token_t *check_label(token_t *cursor)
 {
     if (cursor->next == NULL) {
-        printf("L13\n");
         return NULL;
     } else if (cursor->next->id == ID_LABEL) {
         if (allow_char(cursor->token, LABEL_CHARS))

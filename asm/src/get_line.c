@@ -18,7 +18,7 @@ char *get_line(FILE *source_file)
         if (nread == -1)
             return NULL;
         line[nread - 1] = '\0';
-        clean_line(line);
+        line = clean_line(line);
         if (my_strlen(line))
             break;
     }
