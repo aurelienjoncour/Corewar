@@ -18,6 +18,7 @@
 #include "op.h"
 #include "constant.h"
 #include "node.h"
+#include "write_t.h"
 
 #define MAX_LINE 1000
 
@@ -49,7 +50,10 @@ int find_index_op(char *mnemonique);
 bool allow_char(char *script, char *allow_char);
 
 void get_prog_size(header_t *header, token_t **token);
+int get_line_size(token_t *token);
 unsigned char get_description_params(token_t *token);
+unsigned int get_adress_label(char *label, token_t **array, int index);
+unsigned short get_adress_label_short(char *label, token_t **array, int index);
 int write_instruction(int fd, token_t **array);
 bool is_index_type(char *mnemonique);
 bool correct_line(token_t *line);

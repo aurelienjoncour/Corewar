@@ -38,7 +38,7 @@ static int compute_size(token_t *tmp)
     return size;
 }
 
-static int get_line_size(token_t *token)
+int get_line_size(token_t *token)
 {
     token_t *tmp = token;
 
