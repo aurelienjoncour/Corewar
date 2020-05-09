@@ -7,6 +7,33 @@
 
 #include "corewar.h"
 
+static char get_type(TYPE type)
+{
+    if (type == D_REG)
+        return 1;
+    if (type == D_DIR)
+        return 2;
+    if (type == D_IND)
+        return 4;
+    return 0;
+}
+
+static bool correct_params(op_t act, token_t *line)
+{
+    size_t param = 0;
+    token_t *move = line;
+
+    for (size_t i = 0; move; i++) {
+        if (move->type >= D_REG) {
+            if ((get_type(move->type) & act.type[param]) == 0)
+                return false;
+            param++;
+        }
+        move = move->next;
+    }
+    return true;
+}
+
 static char get_line_size(token_t *line)
 {
     size_t i;
@@ -33,6 +60,8 @@ bool correct_line(token_t *line)
     else
         pos = find_index_op(line->token);
     if (op_tab[pos].nbr_args != size)
+        return false;
+    if (correct_params(op_tab[pos], line))
         return false;
     return true;
 }
