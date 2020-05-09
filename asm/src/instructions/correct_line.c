@@ -10,11 +10,11 @@
 static char get_type(TYPE type)
 {
     if (type == D_REG)
-        return 1;
+        return T_REG;
     if (type == D_DIR)
-        return 2;
+        return T_DIR;
     if (type == D_IND)
-        return 4;
+        return T_IND;
     return 0;
 }
 
@@ -34,7 +34,7 @@ static bool correct_params(op_t act, token_t *line)
     return true;
 }
 
-static char get_line_size(token_t *line)
+static char get_nb_params(token_t *line)
 {
     size_t i;
     size_t nb = 0;
@@ -50,7 +50,7 @@ static char get_line_size(token_t *line)
 
 bool correct_line(token_t *line)
 {
-    char size = get_line_size(line);
+    char size = get_nb_params(line);
     int pos = 0;
 
     if (!line->next->next)
@@ -61,7 +61,7 @@ bool correct_line(token_t *line)
         pos = find_index_op(line->token);
     if (op_tab[pos].nbr_args != size)
         return false;
-    if (correct_params(op_tab[pos], line))
+    if (!correct_params(op_tab[pos], line))
         return false;
     return true;
 }
