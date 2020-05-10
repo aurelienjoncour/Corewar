@@ -27,8 +27,6 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)header/get_name.c				\
 				$(SRC_DIR)header/get_comment.c			\
 				$(SRC_DIR)header/get_prog_size.c		\
-				$(SRC_DIR)instructions/read_file.c		\
-				$(SRC_DIR)instructions/comment_manage.c	\
 				$(SRC_DIR)instructions/get_description_params.c	\
 				$(SRC_DIR)instructions/write_instruction.c	\
 				$(SRC_DIR)instructions/get_instruction.c	\

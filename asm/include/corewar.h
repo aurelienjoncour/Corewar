@@ -20,8 +20,6 @@
 #include "node.h"
 #include "write_t.h"
 
-#define MAX_LINE 1000
-
 int usage(char *binary, int status);
 char *clean_line(char *line);
 char *get_line(FILE *source_file);
@@ -38,9 +36,6 @@ int write_header(int fd, header_t *header, token_t **array);
 
 
 token_t **get_instruction(FILE *source_file);
-char **read_file(FILE *source_file);
-void destroy_file(char **file);
-void edit_file(char **file);
 
 token_t *tokeniser(char *av);
 void rm_useless_separator(token_t *token);
