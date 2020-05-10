@@ -53,6 +53,7 @@ static bool double_label_declaration(char **list)
     size_t nb_label = 0;
 
     for (size_t i = 0; list[i] != NULL; i++) {
+        nb_label = 0;
         for (size_t j = 0; list[j] != NULL; j++) {
             if (!my_strcmp(list[i], list[j]))
                 nb_label++;
