@@ -48,6 +48,21 @@ static bool check_label(token_t *token, char **list)
     return true;
 }
 
+static bool double_label_declaration(char **list)
+{
+    size_t nb_label = 0;
+
+    for (size_t i = 0; list[i] != NULL; i++) {
+        for (size_t j = 0; list[j] != NULL; j++) {
+            if (!my_strcmp(list[i], list[j]))
+                nb_label++;
+        }
+        if (nb_label != 1)
+            return true;
+    }
+    return false;
+}
+
 bool error_label(token_t **array)
 {
     char **list = get_list_label(array);
@@ -55,8 +70,14 @@ bool error_label(token_t **array)
     if (list == NULL)
         return true;
     for (size_t i = 0; array[i] != NULL; i++) {
-        if (!check_label(array[i], list))
+        if (!check_label(array[i], list)) {
+            free_word_array(list);
             return true;
+        }
+    }
+    if (double_label_declaration(list)) {
+        free_word_array(list);
+        return true;
     }
     free_word_array(list);
     return false;
