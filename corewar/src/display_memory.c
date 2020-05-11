@@ -7,7 +7,7 @@
 
 #include "corewar.h"
 
-void display_memory(int *memory)
+void display_memory(unsigned char *memory)
 {
     for (size_t i = 0; i < MEM_SIZE; i++) {
         if (memory[i] < 16)

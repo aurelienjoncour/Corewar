@@ -15,6 +15,8 @@ static void read_all_data(char *path, data_read_t *file)
 
     nb_read = read(fd, &file->head, sizeof(header_t));
     file->head.prog_size = htobe32(file->head.prog_size);
+    if (nb_read != sizeof(header_t))
+        return;
     file->data = malloc(sizeof(unsigned char) * (file->head.prog_size + 1));
     nb_read = read(fd, file->data, file->head.prog_size);
     file->data[file->head.prog_size] = '\0';

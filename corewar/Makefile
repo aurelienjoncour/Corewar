@@ -20,6 +20,7 @@ SRC			=	$(SRC_DIR)main.c			\
 				$(SRC_DIR)create_memory.c	\
 				$(SRC_DIR)display_memory.c	\
 				$(SRC_DIR)create_program.c	\
+				$(SRC_DIR)write_on_memory.c	\
 
 OBJ			=	$(SRC:.c=.o)
 

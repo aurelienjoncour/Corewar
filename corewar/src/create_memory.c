@@ -7,11 +7,11 @@
 
 #include "corewar.h"
 
-int *create_memory(void)
+unsigned char *create_memory(void)
 {
-    int *memory = malloc(sizeof(char) * MEM_SIZE);
+    unsigned char *memory = malloc(sizeof(unsigned char) * MEM_SIZE);
 
     for (size_t i = 0; i < MEM_SIZE; i++)
-        memory[i] = 0;
+        memory[i] = '0';
     return memory;
 }

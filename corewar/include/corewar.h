@@ -19,7 +19,6 @@
 #include "constant.h"
 #include "struct.h"
 
-
 typedef struct program_s {
     size_t pc;
     int *reg;
@@ -30,9 +29,11 @@ typedef struct program_s {
 
 int usage(char *binary, int status);
 data_read_t read_file(char *path);
-void display_memory(int *memory);
-int *create_memory(void);
+void display_memory(unsigned char *memory);
+unsigned char *create_memory(void);
 program_t *create_program(int nb_of_player, char *name_of_player,
 size_t load_adress);
+unsigned char *write_data_on_mem(unsigned char *mem, int adr,
+data_read_t *file);
 
 #endif /* !COREWAR_H_ */
