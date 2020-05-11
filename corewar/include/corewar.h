@@ -38,6 +38,6 @@ program_t *create_program(int nb_of_player, char *name_of_player,
 size_t load_adress);
 unsigned char *write_data_on_mem(unsigned char *mem, int adr,
 data_read_t *file);
-void my_put_pointeur(size_t nb);
+void display_pointeur_tab(size_t i, size_t max);
 
 #endif /* !COREWAR_H_ */
