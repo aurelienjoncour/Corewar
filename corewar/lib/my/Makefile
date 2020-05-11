@@ -49,6 +49,7 @@ SRC	=	my_compute_power_rec.c		\
 		my_putstr_error.c			\
 		my_put_nbr_in_str.c			\
 		my_putnbr_base_in_str.c		\
+		my_putnbr_base.c			\
 
 OBJ	=	$(SRC:.c=.o)
 
