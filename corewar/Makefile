@@ -16,6 +16,9 @@ SRC			=	$(SRC_DIR)main.c			\
 				$(SRC_DIR)constant.c		\
 				$(SRC_DIR)usage.c			\
 				$(SRC_DIR)operation/and.c	\
+				$(SRC_DIR)create_memory.c	\
+				$(SRC_DIR)display_memory.c	\
+				$(SRC_DIR)create_program.c	\
 
 OBJ			=	$(SRC:.c=.o)
 
