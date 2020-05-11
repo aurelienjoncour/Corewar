@@ -27,7 +27,6 @@ int get_argument(int ac, char **av, corewar_t *corewar)
         if (flag != -1) {
             retour = flags[flag].fct(&i, av, corewar, &index);
             if (retour == EXIT_ERROR) {
-                printf("La\n");
                 return EXIT_ERROR;
             }
         } else {
