@@ -8,7 +8,7 @@
 #include "corewar.h"
 
 const char *usage_msg[] = {
-    "file_name[.s]\n",
+    " file_name[.s]\n",
     "DESCRIPTION\n",
     "file_name file in assembly language to be converted into file_name.cor,",
     "an\nexecutable in the Virtual Machine.\n",
