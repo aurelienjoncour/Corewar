@@ -9,10 +9,18 @@
 #define COREWAR_H_
 
 #include <stdlib.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <stdio.h>
+#include <fcntl.h>
+#include <endian.h>
 #include "my.h"
 #include "op.h"
 #include "constant.h"
+#include "struct.h"
+
 
 int usage(char *binary, int status);
+data_read_t read_file(char *path);
 
 #endif /* !COREWAR_H_ */
