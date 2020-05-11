@@ -5,14 +5,11 @@
 ** corewar
 */
 
-#include <stdlib.h>
 #include "corewar.h"
-#include "my.h"
 
 static size_t my_put_pointeur(size_t nb)
 {
-    char base[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B',
-                    'C', 'D', 'E', 'F'};
+    char base[16] = "0123456789ABCDEF";
     int temp;
     long unsigned int i = 1;
     size_t nb_char = 0;
@@ -38,6 +35,6 @@ void display_pointeur_tab(size_t i, size_t max)
     size_t move = max - my_put_pointeur((size_t) i);
 
     for (size_t u = 0; u < move; u++)
-        my_putchar(SPACE);
+        my_putchar(' ');
     my_putstr(" : ");
 }

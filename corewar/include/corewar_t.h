@@ -12,6 +12,7 @@
 #include "op.h"
 
 typedef struct {
+    unsigned char *memory;
     champions_t array[MAX_NB_CHAMPIONS];
     int nbr_cycle;
 }corewar_t;
