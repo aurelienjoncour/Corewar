@@ -11,11 +11,14 @@ INC_DIR		=	include/
 
 LIB_DIR		=	lib/my/
 
-SRC			=	$(SRC_DIR)main.c			\
-				$(SRC_DIR)op.c				\
-				$(SRC_DIR)constant.c		\
-				$(SRC_DIR)usage.c			\
-				$(SRC_DIR)operation/and.c	\
+SRC			=	$(SRC_DIR)main.c				\
+				$(SRC_DIR)op.c					\
+				$(SRC_DIR)constant.c			\
+				$(SRC_DIR)tools/usage.c			\
+				$(SRC_DIR)tools/allowed_char.c	\
+				$(SRC_DIR)get_argument.c		\
+				$(SRC_DIR)operation/and.c		\
+				$(SRC_DIR)flag.c				\
 
 OBJ			=	$(SRC:.c=.o)
 

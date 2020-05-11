@@ -8,6 +8,7 @@
 #ifndef _OP_H_
 #define _OP_H_
 
+#define MAX_NB_CHAMPIONS 4
 #define MEM_SIZE (6 * 1024)
 //modulo of the index <
 #define IDX_MOD 512
