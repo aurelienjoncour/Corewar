@@ -19,6 +19,13 @@ SRC			=	$(SRC_DIR)main.c				\
 				$(SRC_DIR)get_argument.c		\
 				$(SRC_DIR)operation/and.c		\
 				$(SRC_DIR)flag.c				\
+				$(SRC_DIR)operation/and.c	\
+				$(SRC_DIR)read_ins.c		\
+				$(SRC_DIR)create_memory.c	\
+				$(SRC_DIR)display_memory.c	\
+				$(SRC_DIR)create_program.c	\
+				$(SRC_DIR)write_on_memory.c	\
+				$(SRC_DIR)display_pointeur.c\
 
 OBJ			=	$(SRC:.c=.o)
 

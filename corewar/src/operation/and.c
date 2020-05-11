@@ -34,8 +34,8 @@ void and_operation(int value1, int value2, int *reg)
 
     binary_result[8] = '\0';
     for (int i = 0; i < REG_SIZE; i++) {
-        digit[0] = find_digit(binary_value1, i, pos[0]);
-        digit[1] = find_digit(binary_value2, i, pos[1]);
+        digit[0] = find_digit(binary_value1, i, &pos[0]);
+        digit[1] = find_digit(binary_value2, i, &pos[1]);
         binary_result[i] = make_and(digit[0], digit[1]);
     }
     result = my_putnbr_base_in_str(my_getnbr(binary_result), "0123456789");
