@@ -19,6 +19,9 @@
 #include "constant.h"
 #include "struct.h"
 
+#define BIT_LINE 32
+#define SPACE ' '
+
 typedef struct program_s {
     size_t pc;
     int *reg;
@@ -35,5 +38,6 @@ program_t *create_program(int nb_of_player, char *name_of_player,
 size_t load_adress);
 unsigned char *write_data_on_mem(unsigned char *mem, int adr,
 data_read_t *file);
+void my_put_pointeur(size_t nb);
 
 #endif /* !COREWAR_H_ */

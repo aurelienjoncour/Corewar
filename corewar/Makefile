@@ -21,6 +21,7 @@ SRC			=	$(SRC_DIR)main.c			\
 				$(SRC_DIR)display_memory.c	\
 				$(SRC_DIR)create_program.c	\
 				$(SRC_DIR)write_on_memory.c	\
+				$(SRC_DIR)display_pointeur.c\
 
 OBJ			=	$(SRC:.c=.o)
 
