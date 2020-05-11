@@ -1,5 +1,6 @@
 boostrap
 *.cor
+*.s
 *.o
 *.a
 corewar/corewar
