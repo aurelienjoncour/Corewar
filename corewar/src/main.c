@@ -5,8 +5,6 @@
 ** main
 */
 
-#include <stdio.h>
-#include <unistd.h>
 #include "corewar.h"
 
 int main(int ac, char **av)
@@ -21,8 +19,6 @@ int main(int ac, char **av)
         destroy_corewar(&corewar);
         return EXIT_ERROR;
     }
-    //assigner valeur -1
-    //gestion d'erreur des valeur initialisé
     if (init_champions(&corewar))
         return EXIT_ERROR;
     display_memory(corewar.memory);
