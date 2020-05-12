@@ -22,6 +22,7 @@
 #include "parser_t.h"
 
 #define BIT_LINE 32
+#define PC champion->program->pc
 
 int usage(char *binary, int status);
 bool allow_char(char *script, char *allow_char);

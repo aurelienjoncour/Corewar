@@ -7,7 +7,7 @@
 
 #include "corewar.h"
 
-void fork()
+void fork(void)
 {
 
 }

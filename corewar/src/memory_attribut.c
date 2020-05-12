@@ -22,7 +22,7 @@ static bool check_col(int addr, int size, champions_t *champ, size_t i)
     return false;
 }
 
-static bool collision(int addr, int size, champions_t *champ, size_t u)
+static bool overlap(int addr, int size, champions_t *champ, size_t u)
 {
     for (size_t i = 0; i < MAX_NB_CHAMPIONS && champ[i].filepath; i++) {
         if (i != u) {
@@ -42,7 +42,7 @@ static bool error_manage_dup(champions_t *champ)
             if (i != u && champ[i].load_address == champ[u].load_address)
                 return false;
         }
-        if (collision(champ[i].load_address, champ[i].head->prog_size, champ, i))
+        if (overlap(champ[i].load_address, champ[i].head->prog_size, champ, i))
             return false;
     }
     return true;

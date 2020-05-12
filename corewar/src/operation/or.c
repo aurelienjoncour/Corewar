@@ -9,7 +9,7 @@
 
 void or(corewar_t *corewar, champions_t *champion)
 {
-    unsigned int *parameters = get_parameters(corewar->memory, champion->program->pc);
+    unsigned int *parameters = get_parameters(corewar->memory, PC);
     unsigned int values[] = {0, 0};
 
     if (check_parameters(parameters, 7) == false)

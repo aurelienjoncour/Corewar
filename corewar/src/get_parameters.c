@@ -43,7 +43,7 @@ unsigned int *parameters)
         if (my_strcmp(par_types_in_binary[i * 2], "10") == 0)
             parameters[i * 2] = T_DIR;
         if (my_strcmp(par_types_in_binary[i * 2], "11") == 0)
-            parameters[i * 2] = T_IND; 
+            parameters[i * 2] = T_IND;
     }
 }
 
