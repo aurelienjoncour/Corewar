@@ -90,9 +90,10 @@ bool attribut_memory(champions_t *champ)
         }
     if (pos == -1) {
         attribut_memory_no_flag(champ);
-        return true;
     }
     else {
-        return active_memory(champ, pos);
+        if (!active_memory(champ, pos))
+            return false;
     }
+    return error_manage_dup(champ);
 }

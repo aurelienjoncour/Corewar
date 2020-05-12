@@ -50,5 +50,6 @@ void write_data_on_mem(corewar_t *corewar, champions_t *champion);
 void live_msg(champions_t *champion);
 void won_msg(champions_t *champion);
 void display_memory(unsigned char *memory);
+bool error_manage_dup(champions_t *champ);
 
 #endif /* !COREWAR_H_ */
