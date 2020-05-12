@@ -35,7 +35,7 @@ int champs_flag(int *i, char **av, corewar_t *corewar, size_t *index);
 unsigned char *create_memory(void);
 program_t *create_program(int nb_of_player, size_t load_adress);
 void display_pointeur_tab(size_t i, size_t max);
-void attribut_number(champions_t *champ);
+bool attribut_number(champions_t *champ);
 bool attribut_memory(champions_t *champ);
 void attribut_memory_no_flag(champions_t *champ);
 
