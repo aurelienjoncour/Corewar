@@ -7,8 +7,12 @@
 
 #include "corewar.h"
 
-void sub(int *reg1, int *reg2, int *reg3)
+void sub(corewar_t *corewar, champions_t *champs)
 {
-    *reg3 = *reg1 - *reg2;
+    int *param = get_parameters(corewar->memory, champion->program->pc);
+
+    champ->program->reg[param[2]] =
+    champ->program->reg[param[0]] - champ->program->reg[param[1]];
     //CARRY
+    free(param);
 }
