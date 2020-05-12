@@ -7,8 +7,11 @@
 
 #include "corewar.h"
 
-void add(int *reg1, int *reg2, int *reg3)
+void add(corewar_t *corewar, champions_t *champs)
 {
-    *reg3 = *reg1 + *reg2;
+    int *param = get_parameters(corewar->memory, champion->program->pc);
+
+    corewar->memory[param[2] % MEM_SIZE] = param[0] + param[1];
     //CARRY
+    free(param);
 }
