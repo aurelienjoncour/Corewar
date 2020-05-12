@@ -46,6 +46,9 @@ int init_champions(corewar_t *corewar);
 void write_data_on_mem(corewar_t *corewar, champions_t *champion);
 //Display
 
+unsigned int *get_parameters(unsigned char *memory, size_t pc);
+bool check_parameters(unsigned int *parameters, int mnemonic);
+
 void live_msg(champions_t *champion);
 void won_msg(champions_t *champion);
 void display_memory(unsigned char *memory);
