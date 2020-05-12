@@ -17,6 +17,10 @@ void ld(corewar_t *corewar, champions_t *champion)
         champion->program->reg[parameters[3]] = parameters[1];
     if (parameters[0] == T_IND)
         champion->program->reg[parameters[3]] =
-        corewar->memory[(champion->program->pc + parameters[1]) % IDX_MOD];
-    //CARRY
+        corewar->memory[(champion->program->pc + parameters[1]
+        % IDX_MOD) % MEM_SIZE];
+    if (champion->program->reg[parameters[3]] == 0)
+        champion->program->carry = 1;
+    else
+        champion->program->carry = 0;
 }

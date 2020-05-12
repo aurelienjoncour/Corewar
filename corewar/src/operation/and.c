@@ -7,41 +7,26 @@
 
 #include "corewar.h"
 
-static char find_digit(char *binary_value, int i, int *pos)
+void and_instruction(corewar_t *corewar, champions_t *champion)
 {
-    if (my_strlen(binary_value) >= REG_SIZE - i) {
-        *pos += 1;
-        return binary_value[*pos - 1];
+    int *parameters = get_parameters(corewar->memory, champion->program->pc);
+    int values[] = {0, 0};
+
+    if (check_parameters(parameters, 6) == false)
+        return;
+    for (size_t i = 0; i < 2; i++) {
+        if (parameters[i * 2] == T_REG)
+            values[i] = champion->program->reg[parameters[i * 2 + 1]];
+        if (parameters[i * 2] == T_DIR)
+            values[i] = parameters[i * 2 + 1];
+        if (parameters[i * 2] == T_IND)
+            values[i] = corewar->memory[
+            (champion->program->pc + parameters[i * 2 + 1]
+            % IDX_MOD) % MEM_SIZE];
     }
-    return '0';
-}
-
-static char make_and(char digit0, char digit1)
-{
-    if (digit0 == '1' && digit1 == '1')
-        return '1';
-    return '0';
-}
-
-void and_operation(int value1, int value2, int *reg)
-{
-    char *binary_value1 = my_putnbr_base_in_str(value1, "01");
-    char *binary_value2 = my_putnbr_base_in_str(value2, "01");
-    char binary_result[5];
-    char *result;
-    char digit[2];
-    int pos[] = {0, 0};
-
-    binary_result[8] = '\0';
-    for (int i = 0; i < REG_SIZE; i++) {
-        digit[0] = find_digit(binary_value1, i, &pos[0]);
-        digit[1] = find_digit(binary_value2, i, &pos[1]);
-        binary_result[i] = make_and(digit[0], digit[1]);
-    }
-    result = my_putnbr_base_in_str(my_getnbr(binary_result), "0123456789");
-    *reg = my_getnbr(result);
-    free(result);
-    free(binary_value1);
-    free(binary_value2);
-    //CARRY
+    champion->program->reg[parameters[5]] = values[0] & values[1];
+    if (champion->program->reg[parameters[5]] == 0)
+        champion->program->carry = 1;
+    else
+        champion->program->carry = 0;
 }
