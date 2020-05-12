@@ -6,19 +6,17 @@
 */
 
 #include "corewar.h"
-#include "struct.h"
 
-unsigned char *write_data_on_mem(unsigned char *mem, int adr,
-data_read_t *file)
+void write_data_on_mem(corewar_t *corewar, champions_t *champion)
 {
+    int adr = champion->load_address;
     int a = 0;
 
     adr = adr % MEM_SIZE;
-    for (size_t i = adr; a < file->head.prog_size; i++) {
+    for (size_t i = adr; a < champion->head->prog_size; i++) {
         if (i >= MEM_SIZE)
             i = 0;
-        mem[i] = file->data[a];
+        corewar->memory[i] = champion->data[a];
         a++;
     }
-    return mem;
 }

@@ -11,23 +11,27 @@ INC_DIR		=	include/
 
 LIB_DIR		=	lib/my/
 
-SRC			=	$(SRC_DIR)main.c				\
-				$(SRC_DIR)op.c					\
-				$(SRC_DIR)constant.c			\
-				$(SRC_DIR)tools/usage.c			\
-				$(SRC_DIR)tools/allowed_char.c	\
-				$(SRC_DIR)get_argument.c		\
-				$(SRC_DIR)operation/and.c		\
-				$(SRC_DIR)flag.c				\
-				$(SRC_DIR)read_ins.c		\
-				$(SRC_DIR)create_memory.c	\
-				$(SRC_DIR)display_memory.c	\
-				$(SRC_DIR)create_program.c	\
-				$(SRC_DIR)write_on_memory.c	\
-				$(SRC_DIR)display_pointeur.c\
-				$(SRC_DIR)champion_attribut.c\
-				$(SRC_DIR)memory_attribut.c\
-				$(SRC_DIR)memory_attribut_no_flag.c\
+SRC			=	$(SRC_DIR)main.c						\
+				$(SRC_DIR)op.c							\
+				$(SRC_DIR)constant.c					\
+				$(SRC_DIR)read_ins.c					\
+				$(SRC_DIR)create_memory.c				\
+				$(SRC_DIR)create_program.c				\
+				$(SRC_DIR)write_on_memory.c				\
+				$(SRC_DIR)champion_attribut.c			\
+				$(SRC_DIR)destroy_corewar.c				\
+				$(SRC_DIR)init_corewar.c				\
+				$(SRC_DIR)init_champions.c				\
+				$(SRC_DIR)memory_attribut.c				\
+				$(SRC_DIR)memory_attribut_no_flag.c		\
+				$(SRC_DIR)tools/usage.c					\
+				$(SRC_DIR)tools/allowed_char.c			\
+				$(SRC_DIR)get_arg/flag.c				\
+				$(SRC_DIR)get_arg/get_argument.c		\
+				$(SRC_DIR)display/display_memory.c		\
+				$(SRC_DIR)display/display_msg.c			\
+				$(SRC_DIR)display/display_pointeur.c	\
+				$(SRC_DIR)operation/and.c				\
 
 OBJ			=	$(SRC:.c=.o)
 

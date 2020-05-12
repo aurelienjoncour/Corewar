@@ -5,8 +5,6 @@
 ** flag
 */
 
-#include <stdio.h>
-
 #include "corewar.h"
 
 int dump_flag(int *i, char **av, corewar_t *corewar, size_t *index)

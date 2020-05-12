@@ -6,28 +6,32 @@
 */
 
 #include "corewar.h"
-#include "struct.h"
 
-static void read_all_data(char *path, data_read_t *file)
+static int read_all_data(int fd, champions_t *champion)
 {
-    int fd = open(path, O_RDONLY);
     ssize_t nb_read = 0;
 
-    nb_read = read(fd, &file->head, sizeof(header_t));
-    file->head.prog_size = htobe32(file->head.prog_size);
+    nb_read = read(fd, champion->head, sizeof(header_t));
     if (nb_read != sizeof(header_t))
-        return;
-    file->data = malloc(sizeof(unsigned char) * (file->head.prog_size + 1));
-    nb_read = read(fd, file->data, file->head.prog_size);
-    file->data[file->head.prog_size] = '\0';
-    close(fd);
+        return EXIT_ERROR;
+    champion->head->prog_size = htobe32(champion->head->prog_size);
+    champion->data = malloc(sizeof(unsigned char) *
+                            (champion->head->prog_size));
+    if (champion->data == NULL)
+        return EXIT_ERROR;
+    nb_read = read(fd, champion->data, champion->head->prog_size);
+    if (nb_read != champion->head->prog_size)
+        return EXIT_ERROR;
+    return EXIT_SUCCESS;
 }
 
-data_read_t read_file(char *path)
+int read_file(champions_t *champion)
 {
-    data_read_t file;
+    int fd = open(champion->filepath, O_RDONLY);
 
-    file.head.prog_size = 0;
-    read_all_data(path, &file);
-    return file;
+    if (fd == -1)
+        return EXIT_ERROR;
+    read_all_data(fd, champion);
+    close(fd);
+    return EXIT_SUCCESS;
 }

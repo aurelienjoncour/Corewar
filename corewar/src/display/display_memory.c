@@ -55,7 +55,7 @@ void display_memory(unsigned char *memory)
             line = 0;
         }
         else
-            my_putchar(SPACE);
+            my_putchar(' ');
         line++;
     }
 }

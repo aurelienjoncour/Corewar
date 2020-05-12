@@ -8,13 +8,15 @@
 #ifndef CHAMPIONS_T_H_
 #define CHAMPIONS_T_H_
 
-#include <stdlib.h>
+#include "program_t.h"
 
 typedef struct {
     int load_address;
     int prog_number;
-    char *prog_name;
     char *filepath;
+    header_t *head;
+    unsigned char *data;
+    program_t *program;
 }champions_t;
 
 
