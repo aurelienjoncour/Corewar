@@ -7,12 +7,26 @@
 
 #include "corewar.h"
 
+static bool check_col(int addr, int size, champions_t *champ, size_t i)
+{
+    if (addr % MEM_SIZE < (addr + size) % MEM_SIZE) {
+        if (addr % MEM_SIZE <= champ[i].load_address &&
+            (addr + size) % MEM_SIZE > champ[i].load_address)
+            return true;
+    }
+    else {
+        if (addr % MEM_SIZE <= champ[i].load_address ||
+            (addr + size) % MEM_SIZE > champ[i].load_address)
+            return true;
+    }
+    return false;
+}
+
 static bool collision(int addr, int size, champions_t *champ, size_t u)
 {
     for (size_t i = 0; i < MAX_NB_CHAMPIONS && champ[i].filepath; i++) {
         if (i != u) {
-            if (addr % MEM_SIZE <= champ[i].load_address &&
-                (addr + size) % MEM_SIZE > champ[i].load_address)
+            if (check_col(addr, size, champ, i))
                 return true;
         }
     }
