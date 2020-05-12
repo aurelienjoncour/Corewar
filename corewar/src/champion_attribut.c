@@ -18,8 +18,8 @@ static bool is_dup(champions_t *champ, int val)
 static int get_value(champions_t *champ)
 {
     for (int i = 0; i < MAX_NB_CHAMPIONS; i++)
-        if (!is_dup(champ, i))
-            return i;
+        if (!is_dup(champ, i + 1))
+            return i + 1;
     return -1;
 }
 
