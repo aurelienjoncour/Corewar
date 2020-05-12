@@ -22,7 +22,8 @@ int init_champions(corewar_t *corewar)
     }
     if (!attribut_number(corewar->array))
         return EXIT_ERROR;
-    attribut_memory(corewar->array);
+    if (!attribut_memory(corewar->array))
+        return EXIT_ERROR;
     for (size_t i = 0; i < 4 && corewar->array[i].filepath != NULL; i++)
         write_data_on_mem(corewar, &corewar->array[i]);
     return EXIT_SUCCESS;

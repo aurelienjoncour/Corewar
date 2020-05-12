@@ -7,93 +7,49 @@
 
 #include "corewar.h"
 
-static bool collision(champions_t *cp, int start, int end, size_t i)
+static bool collision(int addr, int size, champions_t *champ, size_t u)
 {
-    int unit = MEM_SIZE / MAX_NB_CHAMPIONS;
-
-    if (start < end) {
-        if (cp[i].load_address > start && cp[i].load_address < end)
-            return true;
-        if (cp[i].load_address + unit > start &&
-            cp[i].load_address + unit < end)
-            return true;
-    }
-    else {
-        if (cp[i].load_address > start || cp[i].load_address < end)
-            return true;
-        if ((cp[i].load_address + unit) % MEM_SIZE > start ||
-            (cp[i].load_address + unit) % MEM_SIZE < end)
-            return true;
+    for (size_t i = 0; i < MAX_NB_CHAMPIONS && champ[i].filepath; i++) {
+        if (i != u) {
+            if (addr % MEM_SIZE <= champ[i].load_address &&
+                (addr + size) % MEM_SIZE >= champ[i].load_address)
+                return true;
+        }
     }
     return false;
 }
 
-static bool comflict_memory(champions_t *champ, int start, int end)
+static bool error_manage_dup(champions_t *champ)
 {
-    for (size_t i = 0; i < MAX_NB_CHAMPIONS; i++) {
-        if (champ[i].load_address != -1) {
-            if (collision(champ, start, end, i))
+    for (size_t i = 0; i < MAX_NB_CHAMPIONS && champ[i].filepath; i++) {
+        if (champ[i].load_address == -1)
+            return false;
+        for (size_t u = 0; u < MAX_NB_CHAMPIONS; u++) {
+            if (i != u && champ[i].load_address == champ[u].load_address)
                 return false;
         }
+        if (collision(champ[i].load_address, champ[i].head->prog_size, champ, i))
+            return false;
     }
     return true;
 }
 
-static bool end_memory(champions_t *champ, ssize_t pos)
+static size_t nb_champion(champions_t *champ)
 {
-    size_t pres = champ[pos].load_address + (MEM_SIZE / MAX_NB_CHAMPIONS);
+    size_t i;
 
-    for (size_t i = 0; i < (size_t) pos; i++)
-        if (champ[i].load_address == -1) {
-            if (!comflict_memory(champ,
-                pres, pres + (MEM_SIZE / MAX_NB_CHAMPIONS)))
-                return false;
-            else {
-                champ[i].load_address = pres;
-                pres = (pres + (MEM_SIZE / MAX_NB_CHAMPIONS)) % MEM_SIZE;
-            }
-        }
-        else {
-            pres = (champ[i].load_address + (MEM_SIZE / MAX_NB_CHAMPIONS)) % MEM_SIZE;
-        }
-    return true;
-}
-
-static bool active_memory(champions_t *champ, ssize_t pos)
-{
-    size_t pres = champ[pos].load_address + (MEM_SIZE / MAX_NB_CHAMPIONS);
-
-    for (size_t i = pos; i < MAX_NB_CHAMPIONS; i++)
-        if (champ[i].load_address == -1) {
-            if (!comflict_memory(champ,
-                pres, pres + (MEM_SIZE / MAX_NB_CHAMPIONS)))
-                return false;
-            else {
-                champ[i].load_address = pres;
-                pres = (pres + (MEM_SIZE / MAX_NB_CHAMPIONS)) % MEM_SIZE;
-            }
-        }
-        else {
-            pres = (champ[i].load_address + (MEM_SIZE / MAX_NB_CHAMPIONS)) % MEM_SIZE;
-        }
-    return end_memory(champ, pos);
+    for (i = 0; i < MAX_NB_CHAMPIONS && champ[i].filepath; i++);
+    return i;
 }
 
 bool attribut_memory(champions_t *champ)
 {
-    ssize_t pos = -1;
+    int unit = MEM_SIZE / nb_champion(champ);
 
-    for (size_t i = 0; i < MAX_NB_CHAMPIONS; i++)
-        if (champ[i].load_address != -1) {
-            pos = i;
-            break;
-        }
-    if (pos == -1) {
-        attribut_memory_no_flag(champ);
-    }
-    else {
-        if (!active_memory(champ, pos))
-            return false;
-    }
-    return error_manage_dup(champ);
+    for (size_t i = 0; i < MAX_NB_CHAMPIONS && champ[i].filepath; i++)
+        if (champ[i].load_address == -1)
+            champ[i].load_address = unit * i;
+    if (!error_manage_dup(champ))
+        return false;
+    return true;
 }
