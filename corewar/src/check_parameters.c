@@ -7,7 +7,7 @@
 
 #include "corewar.h"
 
-bool check_parameters(int *parameters, int mnemonic)
+bool check_parameters(unsigned int *parameters, int mnemonic)
 {
     op_t op = op_tab[mnemonic - 1];
 

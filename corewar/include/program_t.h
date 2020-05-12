@@ -12,7 +12,7 @@
 
 typedef struct program {
     size_t pc;
-    int *reg;
+    unsigned int *reg;
     int carry;
     int live;
 } program_t;

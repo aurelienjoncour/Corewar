@@ -16,28 +16,10 @@ static int get_mnemonic(unsigned char *memory, size_t pc)
     return mnemonic;
 }
 
-/*static int get_value(unsigned char *memory, size_t adress, size_t size)
+static unsigned int get_value(unsigned char *memory, size_t adress,
+size_t size)
 {
-    char *value = malloc(sizeof(char) * (size * 2 + 1));
-    char *str = NULL;
-    int value = 0;
-
-    value[0] = '\0';
-    for (size_t i = 0; i < size; i++) {
-        str = my_putnbr_base_in_str(memory[adress], "0123456789ABCDEF");
-        value = my_strcat(value, str);
-        adress++;
-        free(str);
-    }
-    str = my_putnbr_base_in_str(value, "0123456789");
-    value = my_getnbr(str);
-    free(str);
-    return value;
-}*/
-
-static int get_value(unsigned char *memory, size_t adress, size_t size)
-{
-    int value = 0;
+    unsigned int value = 0;
     int values[] = {24, 16, 8, 0};
 
     for (size_t i = 0; i < 4; i++) {
@@ -50,7 +32,8 @@ static int get_value(unsigned char *memory, size_t adress, size_t size)
     return value;
 }
 
-static void get_parameters_type(unsigned char par_types, int *parameters)
+static void get_parameters_type(unsigned char par_types,
+unsigned int *parameters)
 {
     char *par_types_in_binary = my_putnbr_base_in_str(par_types, "01");
 
@@ -64,8 +47,8 @@ static void get_parameters_type(unsigned char par_types, int *parameters)
     }
 }
 
-static int get_parameters_values(unsigned char *memory, size_t adress,
-int *parameters, int mnemonic)
+static void get_parameters_values(unsigned char *memory, size_t adress,
+unsigned int *parameters, int mnemonic)
 {
     for (size_t i = 0; i < 4; i++) {
         if (parameters[i * 2] == T_REG) {
@@ -86,9 +69,9 @@ int *parameters, int mnemonic)
     }
 }
 
-int *get_parameters(unsigned char *memory, size_t pc)
+unsigned int *get_parameters(unsigned char *memory, size_t pc)
 {
-    int *parameters = malloc(sizeof(int) * 8);
+    unsigned int *parameters = malloc(sizeof(unsigned int) * 8);
     int mnemonic = get_mnemonic(memory, pc);
 
     for (size_t i = 0; i < 8; i++)
