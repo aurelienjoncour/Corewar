@@ -30,7 +30,6 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)display/display_memory.c		\
 				$(SRC_DIR)display/display_msg.c			\
 				$(SRC_DIR)display/display_pointeur.c	\
-				$(SRC_DIR)operation/and.c				\
 
 OBJ			=	$(SRC:.c=.o)
 
