@@ -9,7 +9,7 @@
 
 int init_champions(corewar_t *corewar)
 {
-    for (size_t i = 0; corewar->array[i].filepath != NULL && i < 4;i++) {
+    for (size_t i = 0; i < 4 && corewar->array[i].filepath != NULL; i++) {
         corewar->array[i].head = malloc(sizeof(header_t));
         if (corewar->array[i].head == NULL)
             return EXIT_ERROR;
