@@ -11,7 +11,8 @@ void sub(corewar_t *corewar, champions_t *champs)
 {
     int *param = get_parameters(corewar->memory, champion->program->pc);
 
-    corewar->memory[param[2] % MEM_SIZE] = param[0] - param[1];
+    champ->program->reg[param[2]] =
+    champ->program->reg[param[0]] - champ->program->reg[param[1]];
     //CARRY
     free(param);
 }
