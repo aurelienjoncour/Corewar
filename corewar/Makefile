@@ -26,6 +26,8 @@ SRC			=	$(SRC_DIR)main.c				\
 				$(SRC_DIR)write_on_memory.c	\
 				$(SRC_DIR)display_pointeur.c\
 				$(SRC_DIR)champion_attribut.c\
+				$(SRC_DIR)memory_attribut.c\
+				$(SRC_DIR)memory_attribut_no_flag.c\
 
 OBJ			=	$(SRC:.c=.o)
 

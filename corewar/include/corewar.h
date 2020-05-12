@@ -51,6 +51,7 @@ unsigned char *write_data_on_mem(unsigned char *mem, int adr,
 data_read_t *file);
 void display_pointeur_tab(size_t i, size_t max);
 void attribut_number(champions_t *champ);
-void attribut_memory(champions_t *champ);
+bool attribut_memory(champions_t *champ);
+void attribut_memory_no_flag(champions_t *champ);
 
 #endif /* !COREWAR_H_ */
