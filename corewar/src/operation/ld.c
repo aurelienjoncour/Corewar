@@ -7,7 +7,7 @@
 
 #include "corewar.h"
 
-void ld(int value, int *reg)
+void ld(corewar_t *corewar, champions_t *champion)
 {
     *reg = value;
     //CARRY
