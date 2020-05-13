@@ -54,4 +54,21 @@ void live_msg(champions_t *champion);
 void won_msg(champions_t *champion);
 void display_memory(unsigned char *memory);
 
+//LIVE
+void ld(corewar_t *corewar, champions_t *champion);
+void st(corewar_t *corewar, champions_t *champion);
+void add(corewar_t *corewar, champions_t *champion);
+void sub(corewar_t *corewar, champions_t *champion);
+void and_instruction(corewar_t *corewar, champions_t *champion);
+void or(corewar_t *corewar, champions_t *champion);
+void xor(corewar_t *corewar, champions_t *champion);
+void zjmp(corewar_t *corewar, champions_t *champion);
+void ldi(corewar_t *corewar, champions_t *champion);
+void sti(corewar_t *corewar, champions_t *champion);
+void fork_instruction(corewar_t *corewar, champions_t *champion);
+void lld(corewar_t *corewar, champions_t *champion);
+void lldi(corewar_t *corewar, champions_t *champion);
+void lfork(corewar_t *corewar, champions_t *champion);
+void aff(corewar_t *corewar, champions_t *champion);
+
 #endif /* !COREWAR_H_ */

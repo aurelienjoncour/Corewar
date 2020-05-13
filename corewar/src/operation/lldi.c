@@ -7,7 +7,7 @@
 
 #include "corewar.h"
 
-void ldi(corewar_t *corewar, champions_t *champion)
+void lldi(corewar_t *corewar, champions_t *champion)
 {
     //TO MAKE
 }

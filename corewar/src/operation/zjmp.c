@@ -15,4 +15,5 @@ void zjmp(corewar_t *corewar, champions_t *champion)
         return;
     champion->program->pc += parameters[1] % IDX_MOD;
     champion->program->pc %= MEM_SIZE;
+    free(parameters);
 }

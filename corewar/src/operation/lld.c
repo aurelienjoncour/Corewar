@@ -2,16 +2,26 @@
 ** EPITECH PROJECT, 2020
 ** CPE_corewar_2019
 ** File description:
-** Live Operation
+** Long Load Operation
 */
 
 #include "corewar.h"
 
-void live(int player_nb, char *player_name)
+void lld(corewar_t *corewar, champions_t *champion)
 {
-    my_putstr("The player ");
-    my_put_nbr(player_nb);
-    my_putstr("(");
-    my_putstr(player_name);
-    my_putstr(")is alive");
+    unsigned int *parameters = get_parameters(corewar->memory, PC);
+
+    if (check_parameters(parameters, 13) == false)
+        return;
+    if (parameters[0] == T_DIR)
+        champion->program->reg[parameters[3]] = parameters[1];
+    if (parameters[0] == T_IND)
+        champion->program->reg[parameters[3]] =
+        corewar->memory[champion->program->pc + parameters[1]
+        % MEM_SIZE];
+    if (champion->program->reg[parameters[3]] == 0)
+        champion->program->carry = 1;
+    else
+        champion->program->carry = 0;
+    free(parameters);
 }

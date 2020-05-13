@@ -15,6 +15,7 @@ typedef struct program {
     unsigned int *reg;
     int carry;
     int live;
+    int wait_time;
 } program_t;
 
 

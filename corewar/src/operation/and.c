@@ -29,4 +29,5 @@ void and_instruction(corewar_t *corewar, champions_t *champion)
         champion->program->carry = 1;
     else
         champion->program->carry = 0;
+    free(parameters);
 }

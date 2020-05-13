@@ -7,7 +7,7 @@
 
 #include "corewar.h"
 
-void fork(void)
+void fork_instruction(corewar_t *corewar, champions_t *champion)
 {
-
+    //TO MAKE
 }

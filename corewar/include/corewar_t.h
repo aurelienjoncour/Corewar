@@ -15,6 +15,7 @@ typedef struct {
     unsigned char *memory;
     champions_t array[MAX_NB_CHAMPIONS];
     int nbr_cycle;
+    int nbr_live;
 }corewar_t;
 
 

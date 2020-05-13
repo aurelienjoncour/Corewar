@@ -14,4 +14,5 @@ void aff(corewar_t *corewar, champions_t *champion)
     if (check_parameters(parameters, 2) == false)
         return;
     my_putchar(champion->program->reg[parameters[1]] % 256);
+    free(parameters);
 }

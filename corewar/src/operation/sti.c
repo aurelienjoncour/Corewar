@@ -7,9 +7,7 @@
 
 #include "corewar.h"
 
-void sti(int *reg, int value1, int value2, int *pc)
+void sti(corewar_t *corewar, champions_t *champion)
 {
-    int *adress = pc + value1 + value2;
-
-    adress = *reg;
+    //TO MAKE
 }

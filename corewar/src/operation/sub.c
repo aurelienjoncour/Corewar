@@ -11,8 +11,10 @@ void sub(corewar_t *corewar, champions_t *champion)
 {
     int *param = get_parameters(corewar->memory, PC);
 
-    champion->program->reg[param[2]] =
-    champion->program->reg[param[0]] - champion->program->reg[param[1]];
-    //CARRY
+    if (check_parameters(param, 5) == false)
+        return;
+    champion->program->reg[param[5]] =
+    champion->program->reg[param[1]] - champion->program->reg[param[3]];
+    //CARRY ?
     free(param);
 }

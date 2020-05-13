@@ -26,4 +26,5 @@ void or(corewar_t *corewar, champions_t *champion)
     }
     champion->program->reg[parameters[5]] = values[0] | values[1];
     //CARRY ?
+    free(parameters);
 }

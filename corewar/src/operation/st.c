@@ -19,4 +19,5 @@ void st(corewar_t *corewar, champions_t *champion)
     if (parameters[2] == T_IND)
         corewar->memory[(champion->program->pc + parameters[3]
         % IDX_MOD) % MEM_SIZE] = champion->program->reg[parameters[1]];
+    free(parameters);
 }
