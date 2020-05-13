@@ -9,10 +9,13 @@
 
 static void dup_champions(champions_t *champion, champions_t *new_champion)
 {
+    new_champion = malloc(sizeof(champions_t));
     new_champion->load_address = champion->load_address;
     new_champion->prog_number = champion->prog_number;
     new_champion->filepath = my_strdup(champion->filepath);
+    new_champion->head = malloc(sizeof(header_t));
     read_file(new_champion);
+    new_champion->program = malloc(sizeof(program_t));
     new_champion->program->pc = champion->program->pc;
     new_champion->program->carry = champion->program->carry;
     new_champion->program->live = new_champion->program->live;
