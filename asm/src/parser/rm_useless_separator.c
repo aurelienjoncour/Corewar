@@ -50,6 +50,8 @@ void rm_useless_separator(token_t *token)
 {
     token_t *last = get_last_token(token);
 
+    if (token == NULL)
+        return;
     if (!my_strlen(last->token)) {
         last->prev->next = NULL;
         free(last->token);

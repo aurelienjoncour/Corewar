@@ -15,12 +15,14 @@ token_t *create_node(char *token, ID id, TYPE type)
         return NULL;
     if (token == NULL) {
         node->token = malloc(sizeof(char));
+        if (node->token == NULL)
+            return NULL;
         node->token[0] = '\0';
     } else {
         node->token = my_strdup(token);
+        if (node->token == NULL)
+            return NULL;
     }
-    if (node->token == NULL)
-        return NULL;
     node->id = id;
     node->type = type;
     node->next = NULL;
