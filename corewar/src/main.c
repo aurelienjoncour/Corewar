@@ -21,7 +21,8 @@ int main(int ac, char **av)
     }
     if (init_champions(&corewar))
         return EXIT_ERROR;
-    display_memory(corewar.memory);
+    //display_memory(corewar.memory);
+    sort_champions(&corewar);
     destroy_corewar(&corewar);
     return EXIT_SUCCESS;
 }

@@ -54,6 +54,7 @@ void live_msg(champions_t *champion);
 void won_msg(champions_t *champion);
 void display_memory(unsigned char *memory);
 
+champions_t **sort_champions(corewar_t *cw);
 champions_t **realloc_champion_array(champions_t **array);
 int nb_champions(champions_t **array);
 
