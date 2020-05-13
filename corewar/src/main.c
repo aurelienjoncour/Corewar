@@ -11,6 +11,8 @@ int main(int ac, char **av)
 {
     corewar_t corewar = {0};
 
+    if (ac == 1)
+        return EXIT_ERROR;
     if (ac == 2 && !my_strcmp(av[1], "-h"))
         return usage(av[0], EXIT_SUCCESS);
     if (init_corewar(&corewar))

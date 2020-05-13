@@ -22,26 +22,37 @@ bool verify_sort(champions_t **arr, int nb)
     return true;
 }
 
+static int find_min(corewar_t *cw, int save)
+{
+    int a = 0;
+    int min = __INT_MAX__;
+
+    for (int i = 0; cw->array[i]; i++) {
+        if ((cw->array[i]->prog_number < min) &&
+        (cw->array[i]->prog_number > save)) {
+            min = cw->array[i]->prog_number;
+            a = i;
+        }
+    }
+    return a;
+}
+
 champions_t **sort_champions(corewar_t *cw)
 {
     int nb_ch = nb_champions(cw->array);
     champions_t **sort_arr = malloc(sizeof(champions_t *) * (nb_ch + 1));
-    int min = 25000000;
     int a = 0;
     int save = -1;
 
-    sort_arr[nb_ch] = NULL;
+    for (int i = 0; i <= nb_ch; i++) {
+        sort_arr[i] = NULL;
+    }
+    if (verify_sort(cw->array, nb_ch))
+        return cw->array;
     for (int b = 0; (verify_sort(sort_arr, nb_ch) != true); b++) {
-        for (int i = 0; cw->array[i]; i++) {
-            if ((cw->array[i]->prog_number < min) &&
-            (cw->array[i]->prog_number > save)) {
-                min = cw->array[i]->prog_number;
-                a = i;
-            }
-        }
+        a = find_min(cw, save);
         sort_arr[b] = cw->array[a];
         save = cw->array[a]->prog_number;
-        min = 25000000;
     }
     return sort_arr;
 }

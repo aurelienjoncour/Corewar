@@ -57,6 +57,7 @@ void display_memory(unsigned char *memory);
 champions_t **sort_champions(corewar_t *cw);
 champions_t **realloc_champion_array(champions_t **array);
 int nb_champions(champions_t **array);
+bool verify_sort(champions_t **arr, int nb);
 
 //LIVE
 void ld(corewar_t *corewar, champions_t *champion);
