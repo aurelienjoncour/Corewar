@@ -10,10 +10,10 @@
 static void check_if_champion_are_alive(corewar_t *corewar)
 {
     for (size_t i = 0; i < 4; i++) {
-        if (corewar->array[i].filepath == NULL)
+        if (corewar->array[i]->filepath == NULL)
             continue;
-        if (corewar->array[i].program->live == 0)
-            corewar->array[i].program->live = -1;
+        if (corewar->array[i]->program->live == 0)
+            corewar->array[i]->program->live = -1;
     }
 }
 
@@ -37,7 +37,7 @@ int *last_alive)
         return;
     }
     for (size_t i = 0; i < 4; i++) {
-        if (corewar->array[i].prog_number ==
+        if (corewar->array[i]->prog_number ==
         corewar->memory[champion->program->pc + 1]) {
             live_msg(&(corewar->array[i]));
             last_alive = corewar->memory[champion->program->pc + 1];
@@ -48,15 +48,15 @@ int *last_alive)
 static void check_instruction(corewar_t *corewar, int *last_alive)
 {
     for (size_t i = 0; i < 4; i++) {
-        if (corewar->array[i].filepath == NULL)
+        if (corewar->array[i]->filepath == NULL)
             continue;
-        if (corewar->array[i].program->live == -1)
+        if (corewar->array[i]->program->live == -1)
             continue;
-        if (corewar->array[i].program->wait_time <= 0)
+        if (corewar->array[i]->program->wait_time <= 0)
             get_wait_time(corewar, &(corewar->array[i]));
-        if (corewar->array[i].program->wait_time == 1)
+        if (corewar->array[i]->program->wait_time == 1)
             make_instruction(corewar, &(corewar->array[i]), last_alive);
-        corewar->array[i].program->wait_time -= 1;
+        corewar->array[i]->program->wait_time -= 1;
     }
 }
 
@@ -64,6 +64,8 @@ void loop(corewar_t *corewar)
 {
     int last_alive = -1;
 
+    if (nb_champions(corewar->array) < 2)
+        return;
     while (1 == 1) {
         check_instruction(corewar, &last_alive);
         if (corewar->nbr_cycle == CYCLE_TO_DIE - (CYCLE_DELTA *
@@ -74,7 +76,7 @@ void loop(corewar_t *corewar)
         corewar->nbr_cycle += 1;
     }
     for (size_t i = 0; i < 4; i++) {
-        if (corewar->array[i].prog_number == last_alive)
+        if (corewar->array[i]->prog_number == last_alive)
             won_msg(&(corewar->array[i]));
     }
 }
