@@ -9,22 +9,22 @@
 
 int init_champions(corewar_t *corewar)
 {
-    for (size_t i = 0; i < 4 && corewar->array[i].filepath != NULL; i++) {
-        corewar->array[i].head = malloc(sizeof(header_t));
-        if (corewar->array[i].head == NULL)
+    for (size_t i = 0; corewar->array[i] != NULL && corewar->array[i]->filepath != NULL; i++) {
+        corewar->array[i]->head = malloc(sizeof(header_t));
+        if (corewar->array[i]->head == NULL)
             return EXIT_ERROR;
-        if (read_file(&corewar->array[i]))
+        if (read_file(corewar->array[i]))
             return EXIT_ERROR;
-        corewar->array[i].program = create_program(
-        corewar->array[i].prog_number, corewar->array[i].load_address);
-        if (corewar->array[i].program == NULL)
+        corewar->array[i]->program = create_program(
+        corewar->array[i]->prog_number, corewar->array[i]->load_address);
+        if (corewar->array[i]->program == NULL)
             return EXIT_ERROR;
     }
     if (!attribut_number(corewar->array))
         return EXIT_ERROR;
     if (!attribut_memory(corewar->array))
         return EXIT_ERROR;
-    for (size_t i = 0; i < 4 && corewar->array[i].filepath != NULL; i++)
-        write_data_on_mem(corewar, &corewar->array[i]);
+    for (size_t i = 0; i < 4 && corewar->array[i]->filepath != NULL; i++)
+        write_data_on_mem(corewar, corewar->array[i]);
     return EXIT_SUCCESS;
 }

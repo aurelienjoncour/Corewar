@@ -29,9 +29,9 @@ int number_flag(int *i, char **av, corewar_t *corewar, size_t *index)
         return EXIT_ERROR;
     if (allow_char(av[*i], "1234") || my_strlen(av[*i]) != 1)
         return EXIT_ERROR;
-    if (corewar->array[*index].prog_number != -1)
+    if (corewar->array[*index]->prog_number != -1)
         return EXIT_ERROR;
-    corewar->array[*index].prog_number = my_getnbr(av[*i]);
+    corewar->array[*index]->prog_number = my_getnbr(av[*i]);
     return EXIT_SUCCESS;
 }
 
@@ -42,9 +42,9 @@ int load_flag(int *i, char **av, corewar_t *corewar, size_t *index)
         return EXIT_ERROR;
     if (allow_char(av[*i], "0123456789"))
         return EXIT_ERROR;
-    if (corewar->array[*index].load_address != -1)
+    if (corewar->array[*index]->load_address != -1)
         return EXIT_ERROR;
-    corewar->array[*index].load_address = my_getnbr(av[*i]);
+    corewar->array[*index]->load_address = my_getnbr(av[*i]);
     return EXIT_SUCCESS;
 }
 
@@ -65,8 +65,8 @@ int champs_flag(int *i, char **av, corewar_t *corewar, size_t *index)
         return EXIT_ERROR;
     }
     free(str);
-    corewar->array[*index].filepath = my_strdup(av[*i]);
-    if (corewar->array[*index].filepath == NULL)
+    corewar->array[*index]->filepath = my_strdup(av[*i]);
+    if (corewar->array[*index]->filepath == NULL)
         return EXIT_ERROR;
     *index = *index + 1;
     return EXIT_SUCCESS;

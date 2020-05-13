@@ -36,8 +36,8 @@ int champs_flag(int *i, char **av, corewar_t *corewar, size_t *index);
 unsigned char *create_memory(void);
 program_t *create_program(int nb_of_player, size_t load_adress);
 void display_pointeur_tab(size_t i, size_t max);
-bool attribut_number(champions_t *champ);
-bool attribut_memory(champions_t *champ);
+bool attribut_number(champions_t **champ);
+bool attribut_memory(champions_t **champ);
 
 int read_file(champions_t *champions);
 int init_corewar(corewar_t *corewar);
@@ -53,6 +53,9 @@ bool check_parameters(unsigned int *parameters, int mnemonic);
 void live_msg(champions_t *champion);
 void won_msg(champions_t *champion);
 void display_memory(unsigned char *memory);
+
+champions_t **realloc_champion_array(champions_t **array);
+int nb_champions(champions_t **array);
 
 //LIVE
 void ld(corewar_t *corewar, champions_t *champion);

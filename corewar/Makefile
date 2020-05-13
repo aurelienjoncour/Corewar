@@ -23,6 +23,8 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)init_corewar.c				\
 				$(SRC_DIR)init_champions.c				\
 				$(SRC_DIR)memory_attribut.c				\
+				$(SRC_DIR)realloc_champion_array.c		\
+				$(SRC_DIR)nb_champion.c					\
 				$(SRC_DIR)tools/usage.c					\
 				$(SRC_DIR)tools/allowed_char.c			\
 				$(SRC_DIR)get_arg/flag.c				\
