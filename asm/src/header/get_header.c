@@ -32,29 +32,32 @@ char *get_quote_str(char *line)
             index++;
         }
     }
+    if (my_strlen(line+quote[1]) != 1)
+        return NULL;
     line[quote[1]] = '\0';
     line += quote[0] + 1;
     return line;
 }
 
-int get_header(header_t *header, FILE *source_file)
+int get_header(header_t *header, FILE *source_file, char **line)
 {
-    char *line = get_line(source_file);
+    int ret = 0;
 
-    if (line == NULL)
+    *line = get_line(source_file);
+    if (*line == NULL)
         return EXIT_ERROR;
-    if (get_name(header, line) == EXIT_ERROR) {
-        free(line);
-        return EXIT_ERROR;
-    }
-    free(line);
-    line = get_line(source_file);
-    if (line == NULL)
-        return EXIT_ERROR;
-    if (get_comment(header, line) == EXIT_ERROR) {
-        free(line);
+    if (get_name(header, *line) == EXIT_ERROR) {
+        free(*line);
         return EXIT_ERROR;
     }
-    free(line);
+    free(*line);
+    *line = get_line(source_file);
+    if (*line == NULL)
+        return EXIT_ERROR;
+    ret = get_comment(header, *line);
+    if (ret != EXIT_SUCCESS)
+        return ret;
+    free(*line);
+    *line = NULL;
     return EXIT_SUCCESS;
 }

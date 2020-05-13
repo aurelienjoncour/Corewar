@@ -31,11 +31,11 @@ char *get_quote_str(char *line);
 int get_comment(header_t *header, char *line);
 int get_name(header_t *header, char *line);
 
-int get_header(header_t *header, FILE *source_file);
+int get_header(header_t *header, FILE *source_file, char **line);
 int write_header(int fd, header_t *header, token_t **array);
 
 
-token_t **get_instruction(FILE *source_file);
+token_t **get_instruction(FILE *source_file, char *line);
 
 token_t *tokeniser(char *av);
 void rm_useless_separator(token_t *token);
