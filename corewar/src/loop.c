@@ -64,6 +64,8 @@ void loop(corewar_t *corewar)
 {
     int last_alive = -1;
 
+    if (nb_champions(corewar->array) < 2) 
+        return;
     while (1 == 1) {
         check_instruction(corewar, &last_alive);
         if (corewar->nbr_cycle == CYCLE_TO_DIE - (CYCLE_DELTA *
