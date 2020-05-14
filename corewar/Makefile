@@ -32,7 +32,26 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)display/display_memory.c		\
 				$(SRC_DIR)display/display_msg.c			\
 				$(SRC_DIR)display/display_pointeur.c	\
+				$(SRC_DIR)operation/add.c				\
+				$(SRC_DIR)operation/aff.c				\
+				$(SRC_DIR)operation/and.c				\
+				$(SRC_DIR)operation/fork.c				\
+				$(SRC_DIR)operation/ld.c				\
+				$(SRC_DIR)operation/ldi.c				\
+				$(SRC_DIR)operation/lfork.c				\
+				$(SRC_DIR)operation/live.c				\
+				$(SRC_DIR)operation/lld.c				\
+				$(SRC_DIR)operation/lldi.c				\
+				$(SRC_DIR)operation/or.c				\
+				$(SRC_DIR)operation/st.c				\
+				$(SRC_DIR)operation/sti.c				\
+				$(SRC_DIR)operation/sub.c				\
+				$(SRC_DIR)operation/xor.c				\
+				$(SRC_DIR)operation/zjmp.c				\
 				$(SRC_DIR)sort_champions.c				\
+				$(SRC_DIR)loop.c						\
+				$(SRC_DIR)check_parameters.c			\
+				$(SRC_DIR)get_parameters.c				\
 
 OBJ			=	$(SRC:.c=.o)
 

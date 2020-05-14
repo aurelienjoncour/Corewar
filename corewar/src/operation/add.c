@@ -9,7 +9,7 @@
 
 void add(corewar_t *corewar, champions_t *champion)
 {
-    int *param = get_parameters(corewar->memory, PC);
+    unsigned int *param = get_parameters(corewar->memory, PC);
 
     if (check_parameters(param, 4) == false)
         return;

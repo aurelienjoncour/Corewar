@@ -39,7 +39,7 @@ int *last_alive)
     for (size_t i = 0; i < 4; i++) {
         if (corewar->array[i]->prog_number ==
         corewar->memory[champion->program->pc + 1]) {
-            live_msg(&(corewar->array[i]));
+            live_msg(corewar->array[i]);
             last_alive = corewar->memory[champion->program->pc + 1];
         }
     }
@@ -53,9 +53,9 @@ static void check_instruction(corewar_t *corewar, int *last_alive)
         if (corewar->array[i]->program->live == -1)
             continue;
         if (corewar->array[i]->program->wait_time <= 0)
-            get_wait_time(corewar, &(corewar->array[i]));
+            get_wait_time(corewar, corewar->array[i]);
         if (corewar->array[i]->program->wait_time == 1)
-            make_instruction(corewar, &(corewar->array[i]), last_alive);
+            make_instruction(corewar, corewar->array[i], last_alive);
         corewar->array[i]->program->wait_time -= 1;
     }
 }
@@ -77,6 +77,6 @@ void loop(corewar_t *corewar)
     }
     for (size_t i = 0; i < 4; i++) {
         if (corewar->array[i]->prog_number == last_alive)
-            won_msg(&(corewar->array[i]));
+            won_msg(corewar->array[i]);
     }
 }

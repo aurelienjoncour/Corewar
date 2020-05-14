@@ -13,10 +13,10 @@ bool check_parameters(unsigned int *parameters, int mnemonic)
 
     if (parameters[op.nbr_args * 2] != 0)
         return false;
-    for (size_t i = 0; i < op.nbr_args; i++) {
+    for (int i = 0; i < op.nbr_args; i++) {
         if (parameters[i * 2] == T_REG && parameters[i * 2 + 1] > REG_NUMBER)
             return false;
-        if (parameters[i * 2] & op.type[i] == 0)
+        if ((parameters[i * 2] & op.type[i]) == 0)
             return false;
     }
     return true;

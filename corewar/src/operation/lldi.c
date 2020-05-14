@@ -9,5 +9,7 @@
 
 void lldi(corewar_t *corewar, champions_t *champion)
 {
+    (void)corewar;
+    (void)champion;
     //TO MAKE
 }

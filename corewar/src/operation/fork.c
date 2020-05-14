@@ -32,7 +32,7 @@ void fork_instruction(corewar_t *corewar, champions_t *champion)
     if (check_parameters(parameters, 12) == false)
         return;
     corewar->array = realloc_champion_array(corewar->array);
-    dup_champion(champion, corewar->array[nb_champions(corewar->array) + 1]);
+    dup_champions(champion, corewar->array[nb_champions(corewar->array) + 1]);
     corewar->array[nb_champions(corewar->array) + 1]->program->pc +=
     parameters[1] % IDX_MOD;
     free(parameters);

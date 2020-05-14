@@ -9,7 +9,7 @@
 
 void sub(corewar_t *corewar, champions_t *champion)
 {
-    int *param = get_parameters(corewar->memory, PC);
+    unsigned int *param = get_parameters(corewar->memory, PC);
 
     if (check_parameters(param, 5) == false)
         return;

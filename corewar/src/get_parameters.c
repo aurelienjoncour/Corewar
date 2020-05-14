@@ -35,15 +35,11 @@ size_t size)
 static void get_parameters_type(unsigned char par_types,
 unsigned int *parameters)
 {
-    char *par_types_in_binary = my_putnbr_base_in_str(par_types, "01");
-
-    for (size_t i = 0; i < 4; i++) {
-        if (my_strcmp(par_types_in_binary[i * 2], "01") == 0)
-            parameters[i * 2] = T_REG;
-        if (my_strcmp(par_types_in_binary[i * 2], "10") == 0)
-            parameters[i * 2] = T_DIR;
-        if (my_strcmp(par_types_in_binary[i * 2], "11") == 0)
-            parameters[i * 2] = T_IND;
+    for (size_t i = 0; i < 8; i += 2) {
+        parameters[i] = par_types >> (6 - i);
+        par_types -= parameters[i] << (6 - i);
+        if (parameters[i] == 3)
+            parameters[i] = T_IND;
     }
 }
 
