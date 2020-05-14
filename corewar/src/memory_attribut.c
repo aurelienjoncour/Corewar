@@ -42,7 +42,8 @@ static bool error_manage_dup(champions_t **champ)
             if (i != u && champ[i]->load_address == champ[u]->load_address)
                 return false;
         }
-        if (overlap(champ[i]->load_address, champ[i]->head->prog_size, champ, i))
+        if (overlap(champ[i]->load_address,
+            champ[i]->head->prog_size, champ, i))
             return false;
     }
     return true;
