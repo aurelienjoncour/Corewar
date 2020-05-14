@@ -17,7 +17,8 @@ void st(corewar_t *corewar, champions_t *champion)
         champion->program->reg[parameters[3]] =
         champion->program->reg[parameters[1]];
     if (parameters[2] == T_IND)
-        corewar->memory[(champion->program->pc + parameters[3]
-        % IDX_MOD) % MEM_SIZE] = champion->program->reg[parameters[1]];
+        write_int_in_mem(corewar->memory,
+        (champion->program->pc + parameters[3] % IDX_MOD) % MEM_SIZE,
+        champion->program->reg[parameters[1]]);
     free(parameters);
 }

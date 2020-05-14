@@ -61,7 +61,6 @@ bool verify_sort(champions_t **arr, int nb);
 
 void loop(corewar_t *corewar);
 
-//LIVE
 void ld(corewar_t *corewar, champions_t *champion);
 void st(corewar_t *corewar, champions_t *champion);
 void add(corewar_t *corewar, champions_t *champion);
@@ -77,5 +76,8 @@ void lld(corewar_t *corewar, champions_t *champion);
 void lldi(corewar_t *corewar, champions_t *champion);
 void lfork(corewar_t *corewar, champions_t *champion);
 void aff(corewar_t *corewar, champions_t *champion);
+
+void write_int_in_mem(unsigned char *memory, size_t adress,
+unsigned int number);
 
 #endif /* !COREWAR_H_ */

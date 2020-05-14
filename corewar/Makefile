@@ -52,6 +52,7 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)loop.c						\
 				$(SRC_DIR)check_parameters.c			\
 				$(SRC_DIR)get_parameters.c				\
+				$(SRC_DIR)write_int_in_mem.c			\
 
 OBJ			=	$(SRC:.c=.o)
 
