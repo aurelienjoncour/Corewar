@@ -60,6 +60,7 @@ int nb_champions(champions_t **array);
 bool verify_sort(champions_t **arr, int nb);
 
 void loop(corewar_t *corewar);
+void update_pc(corewar_t *corewar, champions_t *champion);
 
 int ld(corewar_t *corewar, champions_t *champion);
 int st(corewar_t *corewar, champions_t *champion);

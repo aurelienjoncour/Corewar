@@ -41,7 +41,7 @@ int *last_alive)
 
     if (mnemonic >= 2 && mnemonic <= 16) {
         if (instruction_ptr[mnemonic - 2](corewar, champion) == -1)
-            champion->program->pc = -1:
+            champion->program->pc = -1;
         return;
     }
     if (mnemonic != 1) {
@@ -68,8 +68,10 @@ static void check_instruction(corewar_t *corewar, int *last_alive)
             continue;
         if (corewar->array[i]->program->wait_time <= 0)
             get_wait_time(corewar, corewar->array[i]);
-        if (corewar->array[i]->program->wait_time == 1)
+        if (corewar->array[i]->program->wait_time == 1) {
             make_instruction(corewar, corewar->array[i], last_alive);
+            update_pc(corewar, corewar->array[i]);
+        }
         corewar->array[i]->program->wait_time -= 1;
     }
 }
