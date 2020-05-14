@@ -67,6 +67,8 @@ void loop(corewar_t *corewar)
     if (nb_champions(corewar->array) < 2)
         return;
     while (1 == 1) {
+        if (corewar->current_cycle == corewar->nbr_cycle)
+            display_memory(corewar->memory);
         check_instruction(corewar, &last_alive);
         if (corewar->current_cycle == CYCLE_TO_DIE - (CYCLE_DELTA *
         (corewar->current_cycle / NBR_LIVE))) {
