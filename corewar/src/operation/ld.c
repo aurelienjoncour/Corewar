@@ -7,12 +7,12 @@
 
 #include "corewar.h"
 
-void ld(corewar_t *corewar, champions_t *champion)
+int ld(corewar_t *corewar, champions_t *champion)
 {
     unsigned int *parameters = get_parameters(corewar->memory, PC);
 
     if (check_parameters(parameters, 2) == false)
-        return;
+        return -1;
     if (parameters[0] == T_DIR)
         champion->program->reg[parameters[3]] = parameters[1];
     if (parameters[0] == T_IND)
@@ -24,4 +24,5 @@ void ld(corewar_t *corewar, champions_t *champion)
     else
         champion->program->carry = 0;
     free(parameters);
+    return 1;
 }

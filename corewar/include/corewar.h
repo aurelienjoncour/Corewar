@@ -61,21 +61,21 @@ bool verify_sort(champions_t **arr, int nb);
 
 void loop(corewar_t *corewar);
 
-void ld(corewar_t *corewar, champions_t *champion);
-void st(corewar_t *corewar, champions_t *champion);
-void add(corewar_t *corewar, champions_t *champion);
-void sub(corewar_t *corewar, champions_t *champion);
-void and_instruction(corewar_t *corewar, champions_t *champion);
-void or(corewar_t *corewar, champions_t *champion);
-void xor(corewar_t *corewar, champions_t *champion);
-void zjmp(corewar_t *corewar, champions_t *champion);
-void ldi(corewar_t *corewar, champions_t *champion);
-void sti(corewar_t *corewar, champions_t *champion);
-void fork_instruction(corewar_t *corewar, champions_t *champion);
-void lld(corewar_t *corewar, champions_t *champion);
-void lldi(corewar_t *corewar, champions_t *champion);
-void lfork(corewar_t *corewar, champions_t *champion);
-void aff(corewar_t *corewar, champions_t *champion);
+int ld(corewar_t *corewar, champions_t *champion);
+int st(corewar_t *corewar, champions_t *champion);
+int add(corewar_t *corewar, champions_t *champion);
+int sub(corewar_t *corewar, champions_t *champion);
+int and_instruction(corewar_t *corewar, champions_t *champion);
+int or(corewar_t *corewar, champions_t *champion);
+int xor(corewar_t *corewar, champions_t *champion);
+int zjmp(corewar_t *corewar, champions_t *champion);
+int ldi(corewar_t *corewar, champions_t *champion);
+int sti(corewar_t *corewar, champions_t *champion);
+int fork_instruction(corewar_t *corewar, champions_t *champion);
+int lld(corewar_t *corewar, champions_t *champion);
+int lldi(corewar_t *corewar, champions_t *champion);
+int lfork(corewar_t *corewar, champions_t *champion);
+int aff(corewar_t *corewar, champions_t *champion);
 
 void write_int_in_mem(unsigned char *memory, size_t adress,
 unsigned int number);

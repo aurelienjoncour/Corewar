@@ -39,7 +39,6 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)operation/ld.c				\
 				$(SRC_DIR)operation/ldi.c				\
 				$(SRC_DIR)operation/lfork.c				\
-				$(SRC_DIR)operation/live.c				\
 				$(SRC_DIR)operation/lld.c				\
 				$(SRC_DIR)operation/lldi.c				\
 				$(SRC_DIR)operation/or.c				\

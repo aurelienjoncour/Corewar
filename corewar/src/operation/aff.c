@@ -7,12 +7,13 @@
 
 #include "corewar.h"
 
-void aff(corewar_t *corewar, champions_t *champion)
+int aff(corewar_t *corewar, champions_t *champion)
 {
     unsigned int *parameters = get_parameters(corewar->memory, PC);
 
     if (check_parameters(parameters, 2) == false)
-        return;
+        return -1;
     my_putchar(champion->program->reg[parameters[1]] % 256);
     free(parameters);
+    return 1;
 }

@@ -25,15 +25,16 @@ static void dup_champions(champions_t *champion, champions_t *new_champion)
         new_champion->program->reg = champion->program->reg;
 }
 
-void lfork(corewar_t *corewar, champions_t *champion)
+int lfork(corewar_t *corewar, champions_t *champion)
 {
     unsigned int *parameters = get_parameters(corewar->memory, PC);
 
     if (check_parameters(parameters, 15) == false)
-        return;
+        return -1;
     corewar->array = realloc_champion_array(corewar->array);
     dup_champions(champion, corewar->array[nb_champions(corewar->array) + 1]);
     corewar->array[nb_champions(corewar->array) + 1]->program->pc +=
     parameters[1];
     free(parameters);
+    return 1;
 }

@@ -34,13 +34,18 @@ static void get_wait_time(corewar_t *corewar, champions_t *champion)
 static void make_instruction(corewar_t *corewar, champions_t *champion,
 int *last_alive)
 {
-    void (*instruction_ptr[])(corewar_t *, champions_t *) = {&ld, &st,
+    int (*instruction_ptr[])(corewar_t *, champions_t *) = {&ld, &st,
     &add, &sub, &and_instruction, &or, &xor, &zjmp, &ldi, &sti,
     &fork_instruction, &lld, &lldi, &lfork, &aff};
     int mnemonic = corewar->memory[champion->program->pc];
 
     if (mnemonic >= 2 && mnemonic <= 16) {
-        instruction_ptr[mnemonic - 2](corewar, champion);
+        if (instruction_ptr[mnemonic - 2](corewar, champion) == -1)
+            champion->program->pc = -1:
+        return;
+    }
+    if (mnemonic != 1) {
+        champion->program->pc = -1;
         return;
     }
     for (size_t i = 0;corewar->array[i]; i++) {
@@ -58,6 +63,8 @@ static void check_instruction(corewar_t *corewar, int *last_alive)
         if (corewar->array[i]->filepath == NULL)
             continue;
         if (corewar->array[i]->program->live == -1)
+            continue;
+        if (corewar->array[i]->program->pc == -1)
             continue;
         if (corewar->array[i]->program->wait_time <= 0)
             get_wait_time(corewar, corewar->array[i]);

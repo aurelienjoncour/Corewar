@@ -7,9 +7,10 @@
 
 #include "corewar.h"
 
-void sti(corewar_t *corewar, champions_t *champion)
+int sti(corewar_t *corewar, champions_t *champion)
 {
     (void)corewar;
     (void)champion;
     //TO MAKE
+    return 0;
 }

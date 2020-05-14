@@ -7,12 +7,12 @@
 
 #include "corewar.h"
 
-void st(corewar_t *corewar, champions_t *champion)
+int st(corewar_t *corewar, champions_t *champion)
 {
     unsigned int *parameters = get_parameters(corewar->memory, PC);
 
     if (check_parameters(parameters, 3) == false)
-        return;
+        return -1;
     if (parameters[2] == T_REG)
         champion->program->reg[parameters[3]] =
         champion->program->reg[parameters[1]];
@@ -21,4 +21,5 @@ void st(corewar_t *corewar, champions_t *champion)
         (champion->program->pc + parameters[3] % IDX_MOD) % MEM_SIZE,
         champion->program->reg[parameters[1]]);
     free(parameters);
+    return 1;
 }

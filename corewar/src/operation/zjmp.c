@@ -7,13 +7,14 @@
 
 #include "corewar.h"
 
-void zjmp(corewar_t *corewar, champions_t *champion)
+int zjmp(corewar_t *corewar, champions_t *champion)
 {
     unsigned int *parameters = get_parameters(corewar->memory, PC);
 
     if (!check_parameters(parameters, 9) || champion->program->carry != 1)
-        return;
+        return -1;
     champion->program->pc += parameters[1] % IDX_MOD;
     champion->program->pc %= MEM_SIZE;
     free(parameters);
+    return 1;
 }
