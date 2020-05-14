@@ -7,7 +7,8 @@
 
 #include "corewar.h"
 
-static token_t **interprate_file(token_t **instruction_line, FILE *source_file, char *line)
+static token_t **interprate_file(token_t **instruction_line,
+    FILE *source_file, char *line)
 {
     size_t array = 2;
 
