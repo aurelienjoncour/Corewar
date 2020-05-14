@@ -61,9 +61,11 @@ bool attribut_memory(champions_t **champ)
 {
     int unit = MEM_SIZE / nb_champion(champ);
 
-    for (size_t i = 0; i < MAX_NB_CHAMPIONS && champ[i]->filepath; i++)
+    for (size_t i = 0; i < MAX_NB_CHAMPIONS && champ[i]->filepath; i++) {
         if (champ[i]->load_address == -1)
             champ[i]->load_address = unit * i;
+        champ[i]->program->pc = champ[i]->load_address;
+    }
     if (!error_manage_dup(champ))
         return false;
     return true;

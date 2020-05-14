@@ -59,7 +59,9 @@ int *last_alive)
 
 static void check_instruction(corewar_t *corewar, int *last_alive)
 {
-    for (size_t i = 0; corewar->array[i]; i++) {
+    int nb = nb_champions(corewar->array);
+
+    for (int i = 0; i < nb; i++) {
         if (corewar->array[i]->filepath == NULL)
             continue;
         if (corewar->array[i]->program->live == -1)
