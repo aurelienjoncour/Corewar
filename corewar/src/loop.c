@@ -7,14 +7,21 @@
 
 #include "corewar.h"
 
-static void check_if_champion_are_alive(corewar_t *corewar)
+static bool check_if_champion_are_alive(corewar_t *corewar)
 {
-    for (size_t i = 0; i < 4; i++) {
+    int prog_alive = 0;
+
+    for (size_t i = 0; corewar->array[i]; i++) {
         if (corewar->array[i]->filepath == NULL)
             continue;
         if (corewar->array[i]->program->live == 0)
             corewar->array[i]->program->live = -1;
+        if (corewar->array[i]->program->live == 1)
+            prog_alive += 1;
     }
+    if (prog_alive == 0)
+        return false;
+    return true;
 }
 
 static void get_wait_time(corewar_t *corewar, champions_t *champion)
@@ -36,7 +43,7 @@ int *last_alive)
         instruction_ptr[mnemonic - 2](corewar, champion);
         return;
     }
-    for (size_t i = 0; i < 4; i++) {
+    for (size_t i = 0;corewar->array[i]; i++) {
         if (corewar->array[i]->prog_number ==
         corewar->memory[champion->program->pc + 1]) {
             live_msg(corewar->array[i]);
@@ -47,7 +54,7 @@ int *last_alive)
 
 static void check_instruction(corewar_t *corewar, int *last_alive)
 {
-    for (size_t i = 0; i < 4; i++) {
+    for (size_t i = 0; corewar->array[i]; i++) {
         if (corewar->array[i]->filepath == NULL)
             continue;
         if (corewar->array[i]->program->live == -1)
@@ -73,11 +80,12 @@ void loop(corewar_t *corewar)
         if (corewar->current_cycle == CYCLE_TO_DIE - (CYCLE_DELTA *
         (corewar->current_cycle / NBR_LIVE))) {
             corewar->current_cycle = 0;
-            check_if_champion_are_alive(corewar);
+            if (check_if_champion_are_alive(corewar) == false)
+                break;
         }
         corewar->current_cycle += 1;
     }
-    for (size_t i = 0; i < 4; i++) {
+    for (size_t i = 0; corewar->array[i]; i++) {
         if (corewar->array[i]->prog_number == last_alive)
             won_msg(corewar->array[i]);
     }
