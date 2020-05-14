@@ -10,6 +10,7 @@
 int init_corewar(corewar_t *corewar)
 {
     corewar->nbr_cycle = -1;
+    corewar->current_cycle = 1;
     corewar->array = malloc(sizeof(champions_t *) * 5);
     if (corewar->array == NULL)
         return EXIT_ERROR;

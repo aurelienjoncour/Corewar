@@ -16,6 +16,7 @@ typedef struct {
     champions_t **array;
     int nbr_cycle;
     int nbr_live;
+    int current_cycle;
 }corewar_t;
 
 

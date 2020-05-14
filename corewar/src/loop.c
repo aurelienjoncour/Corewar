@@ -40,7 +40,7 @@ int *last_alive)
         if (corewar->array[i]->prog_number ==
         corewar->memory[champion->program->pc + 1]) {
             live_msg(corewar->array[i]);
-            last_alive = corewar->memory[champion->program->pc + 1];
+            *last_alive = corewar->memory[champion->program->pc + 1];
         }
     }
 }
@@ -68,12 +68,12 @@ void loop(corewar_t *corewar)
         return;
     while (1 == 1) {
         check_instruction(corewar, &last_alive);
-        if (corewar->nbr_cycle == CYCLE_TO_DIE - (CYCLE_DELTA *
-        (corewar->nbr_live / NBR_LIVE))) {
-            corewar->nbr_cycle = 0;
+        if (corewar->current_cycle == CYCLE_TO_DIE - (CYCLE_DELTA *
+        (corewar->current_cycle / NBR_LIVE))) {
+            corewar->current_cycle = 0;
             check_if_champion_are_alive(corewar);
         }
-        corewar->nbr_cycle += 1;
+        corewar->current_cycle += 1;
     }
     for (size_t i = 0; i < 4; i++) {
         if (corewar->array[i]->prog_number == last_alive)
