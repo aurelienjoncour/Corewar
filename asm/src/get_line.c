@@ -22,6 +22,9 @@ char *get_line(FILE *source_file)
         line = clean_line(line);
         if (my_strlen(line))
             break;
+        free(line);
+        line = NULL;
+        len = 0;
     }
     return line;
 }
