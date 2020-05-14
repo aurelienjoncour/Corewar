@@ -15,6 +15,9 @@ void sub(corewar_t *corewar, champions_t *champion)
         return;
     champion->program->reg[param[5]] =
     champion->program->reg[param[1]] - champion->program->reg[param[3]];
-    //CARRY ?
+    if (champion->program->reg[param[5]] == 0)
+        champion->program->carry = 1;
+    else
+        champion->program->carry = 0;
     free(param);
 }

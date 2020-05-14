@@ -25,6 +25,9 @@ void xor(corewar_t *corewar, champions_t *champion)
             % IDX_MOD) % MEM_SIZE];
     }
     champion->program->reg[parameters[5]] = values[0] ^ values[1];
+    if (champion->program->reg[parameters[5]] == 0)
+        champion->program->carry = 1;
+    else
+        champion->program->carry = 0;
     free(parameters);
-    //CARRY ?
 }
