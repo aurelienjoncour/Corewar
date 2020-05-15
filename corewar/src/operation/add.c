@@ -13,9 +13,10 @@ int add(corewar_t *corewar, champions_t *champion)
 
     if (check_parameters(param, 4) == false)
         return -1;
-    champion->program->reg[param[5]] =
-    champion->program->reg[param[1]] + champion->program->reg[param[3]];
-    if (champion->program->reg[param[5]] == 0)
+    champion->program->reg[param[5] - 1] =
+    champion->program->reg[param[1] - 1] +
+    champion->program->reg[param[3] - 1];
+    if (champion->program->reg[param[5] - 1] == 0)
         champion->program->carry = 1;
     else
         champion->program->carry = 0;

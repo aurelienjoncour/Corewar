@@ -14,12 +14,12 @@ int st(corewar_t *corewar, champions_t *champion)
     if (check_parameters(parameters, 3) == false)
         return -1;
     if (parameters[2] == T_REG)
-        champion->program->reg[parameters[3]] =
-        champion->program->reg[parameters[1]];
+        champion->program->reg[parameters[3] - 1] =
+        champion->program->reg[parameters[1] - 1];
     if (parameters[2] == T_IND)
         write_int_in_mem(corewar->memory,
         (champion->program->pc + parameters[3] % IDX_MOD) % MEM_SIZE,
-        champion->program->reg[parameters[1]]);
+        champion->program->reg[parameters[1] - 1]);
     free(parameters);
     return 1;
 }

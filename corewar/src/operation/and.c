@@ -24,7 +24,7 @@ int and_instruction(corewar_t *corewar, champions_t *champion)
         return -1;
     for (size_t i = 0; i < 2; i++) {
         if (parameters[i * 2] == T_REG)
-            values[i] = champion->program->reg[parameters[i * 2 + 1]];
+            values[i] = champion->program->reg[parameters[i * 2 + 1] - 1];
         if (parameters[i * 2] == T_DIR)
             values[i] = parameters[i * 2 + 1];
         if (parameters[i * 2] == T_IND)
@@ -32,8 +32,8 @@ int and_instruction(corewar_t *corewar, champions_t *champion)
             (champion->program->pc + parameters[i * 2 + 1]
             % IDX_MOD) % MEM_SIZE];
     }
-    champion->program->reg[parameters[5]] = values[0] & values[1];
-    update_carry(champion->program->reg[parameters[5]], champion);
+    champion->program->reg[parameters[5] - 1] = values[0] & values[1];
+    update_carry(champion->program->reg[parameters[5] - 1], champion);
     free(parameters);
     return 1;
 }
