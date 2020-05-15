@@ -52,7 +52,8 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)check_parameters.c			\
 				$(SRC_DIR)get_parameters.c				\
 				$(SRC_DIR)write_int_in_mem.c			\
-				$(SRC_DIR)update_pc.c				\
+				$(SRC_DIR)update_pc.c					\
+				$(SRC_DIR)is_index_type.c				\
 
 OBJ			=	$(SRC:.c=.o)
 

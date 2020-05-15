@@ -80,5 +80,6 @@ int aff(corewar_t *corewar, champions_t *champion);
 
 void write_int_in_mem(unsigned char *memory, size_t adress,
 unsigned int number);
+bool is_index_type(char code);
 
 #endif /* !COREWAR_H_ */

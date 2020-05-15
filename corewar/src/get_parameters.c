@@ -42,32 +42,42 @@ unsigned int *parameters, int mnemonic)
             parameters[i * 2 + 1] = get_value(memory, adress, 1);
             adress += 1;
         }
-        if (parameters[i * 2] == T_DIR ||
-        (parameters[i * 2] == T_IND && (mnemonic == 10 || mnemonic == 11 ||
-        mnemonic == 12 || mnemonic == 14 || mnemonic == 15))) {
+        if (parameters[i * 2] == T_IND ||
+            (parameters[i * 2] == T_DIR && is_index_type(mnemonic))) {
             parameters[i * 2 + 1] = get_value(memory, adress, 2);
             adress += 2;
-            continue;
-        }
-        if (parameters[i * 2] == T_IND) {
+        } else if (parameters[i * 2] == T_DIR) {
             parameters[i * 2 + 1] = get_value(memory, adress, 4);
             adress += 4;
         }
     }
 }
 
+static size_t get_size_params(char mnemonic)
+{
+    size_t nb_bytes = 0;
+
+    if (is_index_type(mnemonic)) {
+        nb_bytes = 2;
+    } else {
+        nb_bytes = 4;
+    }
+    return nb_bytes;
+}
+
 unsigned int *get_parameters(unsigned char *memory, size_t pc)
 {
     unsigned int *parameters = malloc(sizeof(unsigned int) * 8);
-    int mnemonic = memory[pc];
+    char mnemonic = memory[pc];
+    size_t nb_bytes = get_size_params(mnemonic);
 
     if (parameters == NULL)
         return NULL;
     for (size_t i = 0; i < 8; i++)
         parameters[i] = 0;
-    if (mnemonic == 1 || mnemonic == 12 || mnemonic == 15 || mnemonic == 9) {
+    if (mnemonic == 1 || mnemonic == 9 || mnemonic == 12 || mnemonic == 15 ) {
         parameters[0] = T_DIR;
-        parameters[1] = get_value(memory, pc + 1, 2);
+        parameters[1] = get_value(memory, pc + 1, nb_bytes);
     } else {
         get_parameters_type(memory[pc + 1], parameters);
         get_parameters_values(memory, pc + 2, parameters, mnemonic);

@@ -13,5 +13,6 @@
 extern const int EXIT_ERROR;
 extern const op_t op_tab[];
 extern const parser_t flags[];
+extern const char index_list[];
 
 #endif /* !CONSTANT_H_ */

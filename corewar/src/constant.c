@@ -15,3 +15,5 @@ const parser_t flags[] = {
     {"-a", load_flag},
     {NULL, NULL}
 };
+
+const char index_list[] = {9, 10, 11, 12, 14, 15, 0};
