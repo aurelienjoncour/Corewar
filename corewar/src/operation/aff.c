@@ -13,7 +13,7 @@ int aff(corewar_t *corewar, champions_t *champion)
 
     if (check_parameters(parameters, 2) == false)
         return -1;
-    my_putchar(champion->program->reg[parameters[1]] % 256);
+    my_putchar(champion->program->reg[parameters[1] - 1] % 256);
     free(parameters);
     return 1;
 }

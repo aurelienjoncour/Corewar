@@ -14,12 +14,12 @@ int ld(corewar_t *corewar, champions_t *champion)
     if (check_parameters(parameters, 2) == false)
         return -1;
     if (parameters[0] == T_DIR)
-        champion->program->reg[parameters[3]] = parameters[1];
+        champion->program->reg[parameters[3] - 1] = parameters[1];
     if (parameters[0] == T_IND)
-        champion->program->reg[parameters[3]] =
+        champion->program->reg[parameters[3] - 1] =
         corewar->memory[(champion->program->pc + parameters[1]
         % IDX_MOD) % MEM_SIZE];
-    if (champion->program->reg[parameters[3]] == 0)
+    if (champion->program->reg[parameters[3] - 1] == 0)
         champion->program->carry = 1;
     else
         champion->program->carry = 0;
