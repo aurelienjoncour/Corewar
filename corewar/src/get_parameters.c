@@ -7,15 +7,6 @@
 
 #include "corewar.h"
 
-static int get_mnemonic(unsigned char *memory, size_t pc)
-{
-    char *mnemonic_str = my_putnbr_base_in_str(memory[pc], "0123456789");
-    int mnemonic = my_getnbr(mnemonic_str);
-
-    free(mnemonic_str);
-    return mnemonic;
-}
-
 static unsigned int get_value(unsigned char *memory, size_t adress,
 size_t size)
 {
@@ -68,8 +59,10 @@ unsigned int *parameters, int mnemonic)
 unsigned int *get_parameters(unsigned char *memory, size_t pc)
 {
     unsigned int *parameters = malloc(sizeof(unsigned int) * 8);
-    int mnemonic = get_mnemonic(memory, pc);
+    int mnemonic = memory[pc];
 
+    if (parameters == NULL)
+        return NULL;
     for (size_t i = 0; i < 8; i++)
         parameters[i] = 0;
     if (mnemonic == 1 || mnemonic == 12 || mnemonic == 15 || mnemonic == 9) {
