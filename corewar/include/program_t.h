@@ -11,7 +11,7 @@
 #include <stdlib.h>
 
 typedef struct program {
-    size_t pc;
+    ssize_t pc;
     unsigned int *reg;
     int carry;
     int live;

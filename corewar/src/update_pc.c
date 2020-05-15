@@ -16,7 +16,7 @@ void update_pc(corewar_t *corewar, champions_t *champion)
         return;
     parameters = get_parameters(corewar->memory, PC);
     champion->program->pc += 1;
-    if (mnemonic != 1 && mnemonic != 12 & mnemonic != 15 && mnemonic != 9)
+    if (mnemonic != 1 && mnemonic != 12 && mnemonic != 15 && mnemonic != 9)
         champion->program->pc += 1;
     for (size_t i = 0; parameters[i * 2] != 0; i++) {
         if (parameters[i * 2] == T_REG)
