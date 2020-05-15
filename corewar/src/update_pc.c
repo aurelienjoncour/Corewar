@@ -21,11 +21,10 @@ void update_pc(corewar_t *corewar, champions_t *champion)
     for (size_t i = 0; parameters[i * 2] != 0; i++) {
         if (parameters[i * 2] == T_REG)
             champion->program->pc += 1;
-        if (parameters[i * 2] == T_DIR ||
-        (parameters[i * 2] == T_IND && (mnemonic == 10 || mnemonic == 11 ||
-        mnemonic == 12 || mnemonic == 14 || mnemonic == 15))) {
+       if (parameters[i * 2] == T_IND ||
+            (parameters[i * 2] == T_DIR && is_index_type(mnemonic))) {
             champion->program->pc += 2;
-        } else if (parameters[i * 2] == T_IND)
+        } else if (parameters[i * 2] == T_DIR)
             champion->program->pc += 4;
     }
 }
