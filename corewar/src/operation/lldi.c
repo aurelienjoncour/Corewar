@@ -15,6 +15,14 @@ static void update_carry(unsigned int value, champions_t *champion)
         champion->program->carry = 0;
 }
 
+static void do_lldi(unsigned int *parameters, corewar_t *corewar,
+champions_t *champion, size_t addres)
+{
+    champion->program->reg[parameters[5] - 1] =
+    get_int_in_memory(corewar->memory, (PC + addres) % MEM_SIZE);
+    update_carry(champion->program->reg[parameters[5] - 1], champion);
+}
+
 int lldi(corewar_t *corewar, champions_t *champion)
 {
     unsigned int *parameters = get_parameters(corewar->memory, PC);
@@ -30,11 +38,10 @@ int lldi(corewar_t *corewar, champions_t *champion)
         if (parameters[i] == T_DIR)
             addres += parameters[i + 1];
         if (parameters[i] == T_IND)
-            addres += get_short_in_memory(corewar->memory, PC + parameters[i + 1]);
+            addres += get_short_in_memory(corewar->memory,
+            PC + parameters[i + 1]);
     }
-    champion->program->reg[parameters[5] - 1] =
-    get_int_in_memory(corewar->memory, (PC + addres) % MEM_SIZE);
-    update_carry(champion->program->reg[parameters[5] - 1], champion);
+    do_lldi(parameters, corewar, champion, addres);
     free(parameters);
     return EXIT_SUCCESS;
     return 0;

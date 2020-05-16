@@ -16,7 +16,7 @@ int sti(corewar_t *corewar, champions_t *champion)
         return EXIT_ERROR;
     if (check_parameters(parameters, 11) == false)
         return EXIT_FAILURE;
-    for (size_t i = 2; i < 6; i+= 2) {
+    for (size_t i = 2; i < 6; i += 2) {
         if (parameters[i] == T_REG)
             address += champion->program->reg[parameters[i + 1] - 1];
         if (parameters[i] == T_DIR)
