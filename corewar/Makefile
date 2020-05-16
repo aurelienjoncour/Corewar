@@ -32,6 +32,7 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)display/display_memory.c		\
 				$(SRC_DIR)display/display_msg.c			\
 				$(SRC_DIR)display/display_pointeur.c	\
+				$(SRC_DIR)operation/live.c				\
 				$(SRC_DIR)operation/add.c				\
 				$(SRC_DIR)operation/aff.c				\
 				$(SRC_DIR)operation/and.c				\
@@ -54,6 +55,7 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)write_int_in_mem.c			\
 				$(SRC_DIR)update_pc.c					\
 				$(SRC_DIR)is_index_type.c				\
+				$(SRC_DIR)get_int_in_memory.c			\
 
 OBJ			=	$(SRC:.c=.o)
 

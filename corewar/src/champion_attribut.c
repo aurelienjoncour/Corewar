@@ -25,8 +25,10 @@ static int get_value(champions_t **champ)
 
 static bool error_manage(champions_t **champ)
 {
-    for (size_t i = 0; i < MAX_NB_CHAMPIONS; i++)
-        for (size_t u = 0; u < MAX_NB_CHAMPIONS; u++) {
+    int nb = nb_champions(champ);
+
+    for (int i = 0; i < nb; i++)
+        for (int u = 0; u < nb; u++) {
             if (i != u && champ[i]->prog_number == champ[u]->prog_number)
                 return false;
         }
@@ -35,8 +37,10 @@ static bool error_manage(champions_t **champ)
 
 bool attribut_number(champions_t **champ)
 {
-    for (size_t i = 0; i < MAX_NB_CHAMPIONS; i++)
+    for (size_t i = 0; champ[i] != NULL && champ[i]->filepath != NULL; i++) {
         if (champ[i]->prog_number == -1)
             champ[i]->prog_number = get_value(champ);
+        champ[i]->program->reg[0] = champ[i]->prog_number;
+    }
     return error_manage(champ);
 }

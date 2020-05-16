@@ -15,7 +15,7 @@ unsigned int number)
     for (size_t i = 0; i < 4; i++) {
         bytes[i] += number >> (24 - i * 8);
         number -= bytes[i] << (24 - i * 8);
-        memory[adress] = bytes[i];
+        memory[adress % MEM_SIZE] = bytes[i];
         adress++;
     }
 }

@@ -11,9 +11,11 @@ int aff(corewar_t *corewar, champions_t *champion)
 {
     unsigned int *parameters = get_parameters(corewar->memory, PC);
 
-    if (check_parameters(parameters, 2) == false)
-        return -1;
+    if (parameters == NULL)
+        return EXIT_ERROR;
+    if (!check_parameters(parameters, 16))
+        return EXIT_FAILURE;
     my_putchar(champion->program->reg[parameters[1] - 1] % 256);
     free(parameters);
-    return 1;
+    return EXIT_SUCCESS;
 }

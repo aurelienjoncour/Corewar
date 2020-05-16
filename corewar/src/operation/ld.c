@@ -7,22 +7,31 @@
 
 #include "corewar.h"
 
-int ld(corewar_t *corewar, champions_t *champion)
+static void update_carry(unsigned int value, champions_t *champion)
 {
-    unsigned int *parameters = get_parameters(corewar->memory, PC);
-
-    if (check_parameters(parameters, 2) == false)
-        return -1;
-    if (parameters[0] == T_DIR)
-        champion->program->reg[parameters[3] - 1] = parameters[1];
-    if (parameters[0] == T_IND)
-        champion->program->reg[parameters[3] - 1] =
-        corewar->memory[(champion->program->pc + parameters[1]
-        % IDX_MOD) % MEM_SIZE];
-    if (champion->program->reg[parameters[3] - 1] == 0)
+    if (value == 0)
         champion->program->carry = 1;
     else
         champion->program->carry = 0;
+}
+
+int ld(corewar_t *corewar, champions_t *champion)
+{
+    size_t address = 0;
+    unsigned int *parameters = get_parameters(corewar->memory, PC);
+
+    if (parameters == NULL)
+        return EXIT_ERROR;
+    if (!check_parameters(parameters, 2))
+        return EXIT_FAILURE;
+    if (parameters[0] == T_DIR) {
+        champion->program->reg[parameters[3] - 1] = parameters[1];
+    } else if (parameters[0] == T_IND){
+        address = (champion->program->pc + parameters[1] % IDX_MOD) % MEM_SIZE;
+        champion->program->reg[parameters[3] - 1] =
+        get_int_in_memory(corewar->memory, address);
+    }
+    update_carry(champion->program->reg[parameters[3] - 1], champion);
     free(parameters);
-    return 1;
+    return EXIT_SUCCESS;
 }

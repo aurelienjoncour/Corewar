@@ -10,7 +10,7 @@
 void update_pc(corewar_t *corewar, champions_t *champion)
 {
     unsigned int *parameters = NULL;
-    int mnemonic = corewar->memory[PC];
+    int mnemonic = corewar->memory[PC % MEM_SIZE];
 
     if (champion->program->pc == -1)
         return;

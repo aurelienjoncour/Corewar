@@ -15,7 +15,7 @@ size_t size)
 
     for (size_t i = 0; i < 4; i++) {
         if (i + size >= 4) {
-            value += memory[adress] << values[i];
+            value += memory[adress % MEM_SIZE] << values[i];
             adress++;
         } else
             value += 0 << values[i];
@@ -79,7 +79,7 @@ unsigned int *get_parameters(unsigned char *memory, size_t pc)
         parameters[0] = T_DIR;
         parameters[1] = get_value(memory, pc + 1, nb_bytes);
     } else {
-        get_parameters_type(memory[pc + 1], parameters);
+        get_parameters_type(memory[(pc + 1) % MEM_SIZE], parameters);
         get_parameters_values(memory, pc + 2, parameters, mnemonic);
     }
     return parameters;

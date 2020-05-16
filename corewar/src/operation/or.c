@@ -15,25 +15,33 @@ static void update_carry(unsigned int value, champions_t *champion)
         champion->program->carry = 0;
 }
 
-int or(corewar_t *corewar, champions_t *champion)
+static void get_value(unsigned int values[], unsigned int *parameters,
+champions_t *champion, corewar_t *corewar)
 {
-    unsigned int *parameters = get_parameters(corewar->memory, PC);
-    unsigned int values[] = {0, 0};
-
-    if (check_parameters(parameters, 7) == false)
-        return -1;
     for (size_t i = 0; i < 2; i++) {
         if (parameters[i * 2] == T_REG)
             values[i] = champion->program->reg[parameters[i * 2 + 1] - 1];
         if (parameters[i * 2] == T_DIR)
             values[i] = parameters[i * 2 + 1];
         if (parameters[i * 2] == T_IND)
-            values[i] = corewar->memory[
-            (champion->program->pc + parameters[i * 2 + 1]
-            % IDX_MOD) % MEM_SIZE];
+            values[i] = get_int_in_memory(corewar->memory,
+            (champion->program->pc + parameters[i * 2 + 1] %
+            IDX_MOD) % MEM_SIZE);
     }
+}
+
+int or(corewar_t *corewar, champions_t *champion)
+{
+    unsigned int *parameters = get_parameters(corewar->memory, PC);
+    unsigned int values[] = {0, 0};
+
+    if (parameters == NULL)
+        return EXIT_ERROR;
+    if (!check_parameters(parameters, 7))
+        return EXIT_FAILURE;
+    get_value(values, parameters, champion, corewar);
     champion->program->reg[parameters[5] - 1] = values[0] | values[1];
     update_carry(champion->program->reg[parameters[5] - 1], champion);
     free(parameters);
-    return 1;
+    return EXIT_SUCCESS;
 }

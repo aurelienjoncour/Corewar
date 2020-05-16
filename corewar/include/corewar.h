@@ -62,6 +62,7 @@ bool verify_sort(champions_t **arr, int nb);
 void loop(corewar_t *corewar);
 void update_pc(corewar_t *corewar, champions_t *champion);
 
+int live(corewar_t *corewar, champions_t *champion);
 int ld(corewar_t *corewar, champions_t *champion);
 int st(corewar_t *corewar, champions_t *champion);
 int add(corewar_t *corewar, champions_t *champion);
@@ -81,5 +82,7 @@ int aff(corewar_t *corewar, champions_t *champion);
 void write_int_in_mem(unsigned char *memory, size_t adress,
 unsigned int number);
 bool is_index_type(char code);
+unsigned int get_int_in_memory(unsigned char *memory, size_t adress);
+unsigned int get_short_in_memory(unsigned char *memory, size_t adress);
 
 #endif /* !COREWAR_H_ */
