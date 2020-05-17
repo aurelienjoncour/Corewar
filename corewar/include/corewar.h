@@ -88,4 +88,7 @@ bool is_index_type(char code);
 unsigned int get_int_in_memory(unsigned char *memory, size_t adress);
 unsigned int get_short_in_memory(unsigned char *memory, size_t adress);
 
+int nb_death(corewar_t *corewar);
+int check_dead(corewar_t *corewar);
+
 #endif /* !COREWAR_H_ */

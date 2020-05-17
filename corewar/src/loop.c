@@ -65,39 +65,32 @@ int compute_instruction(corewar_t *corewar)
 int init_wait_time(corewar_t *corewar)
 {
     int nb = nb_champions(corewar->array);
-    char mnemonique = 0;
+    char code = 0;
 
     for (int i = 0; i < nb; i++) {
-        mnemonique = corewar->memory[corewar->array[i]->program->pc % MEM_SIZE];
-        if (mnemonique >= 0 && mnemonique <= 16) {
+        code = corewar->memory[corewar->array[i]->program->pc % MEM_SIZE];
+        if (code >= 0 && code <= 16) {
             corewar->array[i]->program->wait_time =
-            op_tab[mnemonique - 1].nbr_cycles;
+            op_tab[code - 1].nbr_cycles;
             corewar->array[i]->cycle = 0;
         }
     }
     return EXIT_SUCCESS;
 }
 
-int check_dead(corewar_t *corewar)
+int end_msg(corewar_t *corewar)
 {
     int nb = nb_champions(corewar->array);
-    int dead = 0;
+    int death = nb_death(corewar);
 
-    for (int i = 0; i < nb; i++) {
-        if (!corewar->array[i]->program->live) {
-            corewar->array[i]->program->live = -1;
-        }
-        if (corewar->array[i]->program->live != -1) {
-            corewar->array[i]->program->live = 0;
-        }
+    if (!corewar->last_alive) {
+        my_putstr("Nobody survived...\n");
+    } else if (death == nb) {
+        won_msg(corewar->array[0]);
+    } else {
+        won_msg(corewar->array[corewar->last_alive - 1]);
     }
-    for (int i = 0; i < nb; i++) {
-        if (corewar->array[i]->program->live == -1)
-            dead++;
-    }
-    if (dead == nb - 1 || dead == nb)
-        return true;
-    return false;
+    return EXIT_SUCCESS;
 }
 
 int loop(corewar_t *corewar)
@@ -113,13 +106,12 @@ int loop(corewar_t *corewar)
             if (check_dead(corewar))
                 break;
         }
-        if (corewar->current_cycle == corewar->nbr_cycle)
+        if (corewar->current_cycle == corewar->nbr_cycle) {
             display_memory(corewar->memory);
+            break;
+        }
         cnt++;
     }
-    if (corewar->last_alive)
-        won_msg(corewar->array[corewar->last_alive - 1]);
-    else
-        my_putstr("Nobody survived...\n");
+    end_msg(corewar);
     return EXIT_SUCCESS;
 }

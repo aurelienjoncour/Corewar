@@ -56,6 +56,7 @@ SRC			=	$(SRC_DIR)main.c						\
 				$(SRC_DIR)update_pc.c					\
 				$(SRC_DIR)is_index_type.c				\
 				$(SRC_DIR)get_int_in_memory.c			\
+				$(SRC_DIR)dead_management.c				\
 
 OBJ			=	$(SRC:.c=.o)
 
