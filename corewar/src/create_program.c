@@ -22,6 +22,6 @@ program_t *create_program(int nb_of_player, size_t load_adress)
         program->reg[i] = 0;
     program->carry = 0;
     program->live = 0;
-    program->wait_time = -1;
+    program->wait_time = 0;
     return program;
 }

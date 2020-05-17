@@ -17,6 +17,7 @@ typedef struct {
     header_t *head;
     unsigned char *data;
     program_t *program;
+    int cycle;
 }champions_t;
 
 

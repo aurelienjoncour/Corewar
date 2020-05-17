@@ -17,6 +17,8 @@ typedef struct {
     int nbr_cycle;
     int nbr_live;
     int current_cycle;
+    int nbr_cycle_to_die;
+    int last_alive;
 }corewar_t;
 
 

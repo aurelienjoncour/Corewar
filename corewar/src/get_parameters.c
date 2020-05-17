@@ -68,7 +68,7 @@ static size_t get_size_params(char mnemonic)
 unsigned int *get_parameters(unsigned char *memory, size_t pc)
 {
     unsigned int *parameters = malloc(sizeof(unsigned int) * 8);
-    char mnemonic = memory[pc];
+    char mnemonic = memory[pc % MEM_SIZE];
     size_t nb_bytes = get_size_params(mnemonic);
 
     if (parameters == NULL)

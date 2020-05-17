@@ -10,7 +10,10 @@
 int init_corewar(corewar_t *corewar)
 {
     corewar->nbr_cycle = -1;
-    corewar->current_cycle = 1;
+    corewar->current_cycle = 0;
+    corewar->nbr_cycle_to_die = CYCLE_TO_DIE;
+    corewar->nbr_live = 0;
+    corewar->last_alive = 0;
     corewar->array = malloc(sizeof(champions_t *) * 5);
     if (corewar->array == NULL)
         return EXIT_ERROR;
@@ -19,6 +22,7 @@ int init_corewar(corewar_t *corewar)
         corewar->array[i]->prog_number = -1;
         corewar->array[i]->load_address = -1;
         corewar->array[i]->filepath = NULL;
+        corewar->array[i]->cycle = 0;
     }
     corewar->array[MAX_NB_CHAMPIONS] = NULL;
     corewar->memory = create_memory();
