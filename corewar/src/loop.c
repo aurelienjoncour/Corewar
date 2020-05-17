@@ -7,7 +7,7 @@
 
 #include "corewar.h"
 
-static int (*instruction_ptr[])(corewar_t *, champions_t *) = {
+static fct_ptr tab_inst[] = {
     &live,
     &ld,
     &st,
@@ -37,7 +37,7 @@ int instruction(corewar_t *corewar, champions_t *champion)
     }
     if (champion->cycle + champion->program->wait_time ==
         corewar->current_cycle) {
-        ret = instruction_ptr[mnemonic - 1](corewar, champion);
+        ret = tab_inst[mnemonic - 1](corewar, champion);
         if (ret != EXIT_SUCCESS)
             return ret;
         if (mnemonic != 9)
@@ -117,10 +117,9 @@ int loop(corewar_t *corewar)
             display_memory(corewar->memory);
         cnt++;
     }
-    if (corewar->last_alive) {
+    if (corewar->last_alive)
         won_msg(corewar->array[corewar->last_alive - 1]);
-    } else {
+    else
         my_putstr("Nobody survived...\n");
-    }
     return EXIT_SUCCESS;
 }

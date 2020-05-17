@@ -24,6 +24,9 @@
 #define BIT_LINE 32
 #define PC champion->program->pc
 
+typedef int (*fct_ptr)(corewar_t *, champions_t *);
+
+
 int usage(char *binary, int status);
 bool allow_char(char *script, char *allow_char);
 
