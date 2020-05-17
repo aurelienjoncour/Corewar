@@ -7,9 +7,20 @@
 
 #include "corewar.h"
 
-int live(corewar_t *corewar, champions_t *champion)
+static int get_idx(int param, corewar_t *corewar)
 {
     int nb = nb_champions(corewar->array);
+
+    for (int i = 0; i < nb; i++) {
+        if (corewar->array[i]->prog_number == param)
+            return i;
+    }
+    return 0;
+}
+
+int live(corewar_t *corewar, champions_t *champion)
+{
+    unsigned int nb = nb_champions(corewar->array);
     unsigned int *parameters = get_parameters(corewar->memory, PC);
 
     if (parameters == NULL)
@@ -17,9 +28,9 @@ int live(corewar_t *corewar, champions_t *champion)
     if (check_parameters(parameters, 1) == false)
         return EXIT_FAILURE;
     if (parameters[1] > 0 && parameters[1] <= nb) {
-        live_msg(corewar->array[parameters[1] - 1]);
+        live_msg(corewar->array[get_idx(parameters[1], corewar)]);
         corewar->last_alive = parameters[1];
-        champion->program->live = 1;
+        corewar->array[get_idx(parameters[1], corewar)]->program->live = 1;
     }
     corewar->nbr_live++;
     if (corewar->nbr_live >= NBR_LIVE) {
